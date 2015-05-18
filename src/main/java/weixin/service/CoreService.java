@@ -69,22 +69,7 @@ public class CoreService {
             }  
             
             textMessage.setContent(respContent);
-            /*
-            String dateStr = Calendar.getInstance().getTimeInMillis() + "";
-            
-            String str = "<xml>" + 
-					"<ToUserName><![CDATA[toUserName]]></ToUserName>" 
-            		+ "<FromUserName><![CDATA[fromUserName]]></FromUserName>"
-            		+ "<CreateTime>dateStr</CreateTime>"
-            		+ "<MsgType><![CDATA[text]]></MsgType>"
-            		+ "<Content><![CDATA[respContent]]></Content>"
-            		+ "<FuncFlag>0</FuncFlag>"
-            		+ "</xml>";
-            
-            str = str.replace("toUserName", fromUserName).replace("fromUserName", toUserName).replace("dateStr", dateStr).replace("respContent", respContent);
-            */
             respMessage = MsgUtil.textMessageToXml(textMessage);  
-            //  respMessage = str;
         } catch (Exception e) {  
         	System.out.println(e.getMessage());
             e.printStackTrace();  
