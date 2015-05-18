@@ -19,8 +19,6 @@ public class CoreService {
     public static String processRequest(HttpServletRequest request) {  
         String respMessage = null;  
         try {  
-        	
-        	
             // 默认返回的文本消息内容  
             String respContent = "请求处理异常，请稍候尝试！";  
   
