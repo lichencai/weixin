@@ -7,14 +7,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class TokenUtil {
-	public final static String appID = "wxc6cd1d4aa70a7dfc";
-	public final static String appSecret = "af9a8822ca985681b5c171bf6f979790";
+	public final static String appID = "wx769fdfe12773b6be";
+	public final static String appSecret = "5a95b580c0b32d33cf66b6e16baedf5b";
 	
 	public static String getToken(){
 		String token = null;
 		String url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="
-				+"wxc6cd1d4aa70a7dfc"
-				+"&appSecret"+"af9a8822ca985681b5c171bf6f979790";
+				+"wx769fdfe12773b6be"
+				+"&appSecret"+"5a95b580c0b32d33cf66b6e16baedf5b";
 		System.out.println(url);
 		try {
 			URL urlGet = new URL(url);

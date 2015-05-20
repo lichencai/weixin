@@ -1,15 +1,19 @@
 package weixin.service;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
+
 import weixin.resp.TextMessage;
 import weixin.util.MsgUtil;
+import weixin.util.SystemUtil;
 
 public class CoreService {
+	
+	private static Logger logger = Logger.getLogger(CoreService.class);
 	/** 
      * 处理微信发来的请求 
      *  
@@ -25,8 +29,6 @@ public class CoreService {
             // xml请求解析  
             Map<String, String> requestMap = MsgUtil.parseXml(request);  
             
-            System.out.println(requestMap);
-            
             // 发送方帐号（open_id）  
             String fromUserName = requestMap.get("FromUserName");  
             // 公众帐号  
@@ -41,14 +43,11 @@ public class CoreService {
             textMessage.setCreateTime(new Date().getTime());  
             textMessage.setMsgType(MsgUtil.RESP_MESSAGE_TYPE_TEXT);  
             textMessage.setFuncFlag(0);  
-  
-            
             
             // 文本消息  
             if (msgType.equals(MsgUtil.REQ_MESSAGE_TYPE_TEXT)) {
-            	String urlTemp = request.getContextPath() + "/demo.html";
-                respContent = "您发送的是文本消息！" + "<a href=\"http://haoyunlai158.com/weixin/demo.html\">html5</a>";  
-                System.out.println(respContent);
+            	String urlTemp = SystemUtil.ipAddress + request.getContextPath() + "/index.html";
+                respContent = "您发送的是文本消息！" + "<a href=\"" + urlTemp + "\">html5</a>";
             }else if (msgType.equals(MsgUtil.REQ_MESSAGE_TYPE_EVENT)) {  
                 // 事件类型  
                 String eventType = requestMap.get("Event");  
