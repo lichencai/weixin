@@ -53,12 +53,11 @@ public class CoreServlet{
     @RequestMapping(value = {"/coreServlet"}, method = RequestMethod.POST)
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
     	
-    	System.out.println("======doPost====");
-    	
     	// 将请求、响应的编码均设置为UTF-8（防止中文乱码）  
         //request.setCharacterEncoding("UTF-8");  
         //response.setCharacterEncoding("UTF-8");  
-  
+    	logger.debug("into...");
+    	
         // 调用核心业务类接收消息、处理消息  
         String respMessage = CoreService.processRequest(request);  
           
@@ -67,10 +66,7 @@ public class CoreServlet{
         out.print(respMessage);  
         out.close();
         
-        logger.error("error...");
-        
-        System.out.println("end...");
-        
+        logger.debug("outto...");
     }  
   
 } 

@@ -1,15 +1,19 @@
 package weixin.service;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
+
 import weixin.resp.TextMessage;
 import weixin.util.MsgUtil;
+import weixin.util.SystemUtil;
 
 public class CoreService {
+	
+	private static Logger logger = Logger.getLogger(CoreService.class);
 	/** 
      * 处理微信发来的请求 
      *  
@@ -19,15 +23,11 @@ public class CoreService {
     public static String processRequest(HttpServletRequest request) {  
         String respMessage = null;  
         try {  
-        	
-        	
             // 默认返回的文本消息内容  
             String respContent = "请求处理异常，请稍候尝试！";  
   
             // xml请求解析  
             Map<String, String> requestMap = MsgUtil.parseXml(request);  
-            
-            System.out.println(requestMap);
             
             // 发送方帐号（open_id）  
             String fromUserName = requestMap.get("FromUserName");  
@@ -43,14 +43,11 @@ public class CoreService {
             textMessage.setCreateTime(new Date().getTime());  
             textMessage.setMsgType(MsgUtil.RESP_MESSAGE_TYPE_TEXT);  
             textMessage.setFuncFlag(0);  
-  
-            
             
             // 文本消息  
             if (msgType.equals(MsgUtil.REQ_MESSAGE_TYPE_TEXT)) {
-            	String urlTemp = request.getContextPath() + "/demo.html";
-                respContent = "您发送的是文本消息！" + "<a href=\"http://haoyunlai158.com/weixin/demo.html\">html5</a>";  
-                System.out.println(respContent);
+            	String urlTemp = SystemUtil.ipAddress + request.getContextPath() + "/index.html";
+                respContent = "您发送的是文本消息！" + "<a href=\"" + urlTemp + "\">html5</a>";
             }else if (msgType.equals(MsgUtil.REQ_MESSAGE_TYPE_EVENT)) {  
                 // 事件类型  
                 String eventType = requestMap.get("Event");  
@@ -69,22 +66,7 @@ public class CoreService {
             }  
             
             textMessage.setContent(respContent);
-            /*
-            String dateStr = Calendar.getInstance().getTimeInMillis() + "";
-            
-            String str = "<xml>" + 
-					"<ToUserName><![CDATA[toUserName]]></ToUserName>" 
-            		+ "<FromUserName><![CDATA[fromUserName]]></FromUserName>"
-            		+ "<CreateTime>dateStr</CreateTime>"
-            		+ "<MsgType><![CDATA[text]]></MsgType>"
-            		+ "<Content><![CDATA[respContent]]></Content>"
-            		+ "<FuncFlag>0</FuncFlag>"
-            		+ "</xml>";
-            
-            str = str.replace("toUserName", fromUserName).replace("fromUserName", toUserName).replace("dateStr", dateStr).replace("respContent", respContent);
-            */
             respMessage = MsgUtil.textMessageToXml(textMessage);  
-            //  respMessage = str;
         } catch (Exception e) {  
         	System.out.println(e.getMessage());
             e.printStackTrace();  

@@ -32,22 +32,16 @@
       <version>2.3.2-b01</version> 
     </dependency>  
     
-    <dependency>  
-    	<groupId>org.appach</groupId>  
-    	<artifactId>dom4j</artifactId>  
-    	<version>1.6.1</version> 
-        <scope>system</scope>  
-        <systemPath>E:\\IDE\\apache-maven-3.2.3-bin\\jar\\dom4j-1.6.1.jar</systemPath>  
+	<dependency>
+		<groupId>xstream</groupId>
+		<artifactId>xstream</artifactId>
+		<version>1.2.2</version>
 	</dependency>
-	
-	<dependency>  
-    	<groupId>com.thoughtworks</groupId>  
-    	<artifactId>xstream</artifactId>  
-    	<version>1.3.1</version> 
-        <scope>system</scope>  
-        <systemPath>E:\\IDE\\apache-maven-3.2.3-bin\\jar\\xstream-1.3.1-sae-liufeng.jar</systemPath>  
+	<dependency>
+		<groupId>dom4j</groupId>
+		<artifactId>dom4j</artifactId>
+		<version>1.6.1</version>
 	</dependency>
-	
 	<!-- log4j -->
     <dependency>
 	  <groupId>log4j</groupId>
@@ -55,14 +49,6 @@
 	  <version>1.2.9</version>
 	</dependency>
 	
-	<!-- <dependency>  
-    	<groupId>org.appach</groupId>  
-    	<artifactId>log4j</artifactId>  
-    	<version>1.2.16</version> 
-        <scope>system</scope>  
-        <systemPath>E:\\IDE\\apache-maven-3.2.3-bin\\jar\\log4j-1.2.16.jar</systemPath>  
-	</dependency> -->
-    
     <!-- spring begin -->  
     <dependency> 
       <groupId>org.springframework</groupId>  
