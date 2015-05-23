@@ -48,7 +48,11 @@
 	  <artifactId>log4j</artifactId>
 	  <version>1.2.9</version>
 	</dependency>
-	
+	<dependency>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-xc</artifactId>
+        <version>1.9.7</version>
+    </dependency>
     <!-- spring begin -->  
     <dependency> 
       <groupId>org.springframework</groupId>  

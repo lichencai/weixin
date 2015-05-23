@@ -1,0 +1,7 @@
+.loginInfo{height:40px;background: darkgray;}
+.loginInfo .title{margin-left: 5px;margin-top: 5px;display: block;float: left;font-size: 15px;}
+#menu {display:block;float:right;}
+#menu, #menu li {list-style:none;padding:0;margin:0;}
+#menu li {float:left;}
+#menu li a {display:block;width:37px;height:30px;text-align:center;text-decoration:none;cursor:default;margin-top: 5px;margin-right: 18px;font-size: 15px;}
+#menu li a.last {border-right:0;}

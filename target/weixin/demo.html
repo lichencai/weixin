@@ -8,42 +8,78 @@
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+
+<link rel="stylesheet" href="/weixin/css/main.css">
+<link rel="stylesheet" href="/weixin/css/idx.css">
+
+<script type="text/javascript">
+
+$('#pageDialog1').live('pagecreate', function (event) {
+    $("#testClick").click(function () {
+        var name = $("#pageDialog1 input[name=name]").val();
+        var pwd = $("#pageDialog1 input[name=pwd]").val();
+        if($.trim(name)==''){
+        	alert("请输入账号");
+        	return ;
+        }
+        if($.trim(pwd)==''){
+        	alert(pwd);
+        	alert("请输入密码");
+        	return ;
+        }
+        var obj = {
+        		name : name,
+        		pwd : pwd
+        }
+        $.ajax({
+			url:"/weixin/web/login/login",
+			type : "post",
+			data:obj,
+			dataType : "json",
+			success : function(json) {
+				alert(json);
+			},
+			error : function(json){
+				console.log("error");
+				console.log(json);
+			}
+		 });
+        
+        $('.ui-dialog').dialog('close');
+    });
+});
+</script>
+
 </head>
 
 <body>
 
 <div data-role="page" id="page1"> <!--  page  -->
  
-    <div data-role="header"> <!-- header 頁眉 -->
-        <a href="#" data-role="button" data-icon="home">首页</a>
-        <h1>用户登录</h1>
-        <a href="#" data-role="button" class="ui-btn-right" data-icon="search">搜索</a>
-      </div>    <!-- 頁眉 End  -->
- 
-    <br />
-    <div data-role="fieldcontain">
-     
-        <label for="textinput1">
-               用戶名：
-         </label>
-         <input id="textinput1"  placeholder="" value="" type="text" />
-   <br />
-       <label for="textinput2">
-               密　碼：
-         </label>
-         <input id="textinput2"  placeholder="" value="" type="Password" />
-         
-        </div>
-         <br />
-    <div data-role="fieldcontain"> 
-        <div data-role="controlgroup" data-type="vertical">
-            <a href="index.html"   data-role="button">登　录</a>
-            <a href="regisit.html"  data-corners="false" data-role="button">注　册</a>
-         
+    <div class="loginInfo">
+        <span class="title">好运来大数据平台</span>
+        <ul id="menu">
+	        <li><a href="/weixin/html/login.html" data-rel="dialog" data-inline="true">登录</a></li>
+	       	<li><a>注册</a></li>
+        </ul>
     </div>
-   </div>
-   </div>
- <!--page end -->
+ 	
+    <div data-role="content" data-theme="c">
+	    <div data-role="navbar">
+		    <ul>
+		      <li><a href="#anylink">页面一</a></li>
+		      <li><a href="#anylink">页面二</a></li>
+		      <li><a href="#anylink">页面三</a></li>
+		    </ul>
+		 </div>
+	</div>
+	
+	<div data-role="footer" data-theme="d">
+		<div align="center">
+			2015A
+		</div>
+	</div>
+</div>
 
 </body>
 </html>

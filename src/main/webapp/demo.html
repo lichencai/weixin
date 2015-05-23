@@ -11,6 +11,45 @@
 
 <link rel="stylesheet" href="/weixin/css/main.css">
 <link rel="stylesheet" href="/weixin/css/idx.css">
+
+<script type="text/javascript">
+
+$('#pageDialog1').live('pagecreate', function (event) {
+    $("#testClick").click(function () {
+        var name = $("#pageDialog1 input[name=name]").val();
+        var pwd = $("#pageDialog1 input[name=pwd]").val();
+        if($.trim(name)==''){
+        	alert("请输入账号");
+        	return ;
+        }
+        if($.trim(pwd)==''){
+        	alert(pwd);
+        	alert("请输入密码");
+        	return ;
+        }
+        var obj = {
+        		name : name,
+        		pwd : pwd
+        }
+        $.ajax({
+			url:"/weixin/web/login/login",
+			type : "post",
+			data:obj,
+			dataType : "json",
+			success : function(json) {
+				alert(json);
+			},
+			error : function(json){
+				console.log("error");
+				console.log(json);
+			}
+		 });
+        
+        $('.ui-dialog').dialog('close');
+    });
+});
+</script>
+
 </head>
 
 <body>
