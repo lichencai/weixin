@@ -12,6 +12,8 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
+import weixin.obj.Article;
+import weixin.resp.NewsMessage;
 import weixin.resp.TextMessage;
 
 import com.thoughtworks.xstream.XStream;
@@ -92,6 +94,18 @@ public class MsgUtil {
         xstream.alias("xml", textMessage.getClass());  
         return xstream.toXML(textMessage);  
     } 
+    
+    /**
+     * 图文消息对象转换成xml
+     * 
+     * @param newsMessage 图文消息对象
+     * @return xml
+     */
+    public static String newsMessageToXml(NewsMessage newsMessage) {
+    	xstream.alias("xml", newsMessage.getClass());
+    	xstream.alias("item", new Article().getClass());
+    	return xstream.toXML(newsMessage);
+    }
     
 	/** 
 	 * 解析微信发来的请求（XML） 

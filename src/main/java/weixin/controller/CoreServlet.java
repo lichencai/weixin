@@ -17,7 +17,6 @@ import weixin.util.SignUtil;
 
 @Controller
 public class CoreServlet{  
-    private static final long serialVersionUID = 4440739483644821986L;
   
     private static Logger logger = Logger.getLogger(CoreServlet.class);
     

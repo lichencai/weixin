@@ -1,0 +1,49 @@
+{
+    "button": [
+        {
+            "name": "和悦资讯", 
+            "sub_button": [
+                {
+                    "type": "scancode_waitmsg", 
+                    "name": "今日资讯", 
+                    "key": "rselfmenu_0_0", 
+                    "sub_button": [ ]
+                }
+            ]
+        }, 
+        {
+            "name": "好运来", 
+            "sub_button": [
+                {
+                    "type": "pic_sysphoto", 
+                    "name": "首页", 
+                    "key": "rselfmenu_1_0", 
+                    "sub_button": [ ]
+                 }, 
+                {
+                    "type": "pic_photo_or_album", 
+                    "name": "登陆", 
+                    "key": "rselfmenu_1_1", 
+                    "sub_button": [ ]
+                }, 
+                {
+                    "type": "pic_weixin", 
+                    "name": "我的空间", 
+                    "key": "rselfmenu_1_2", 
+                    "sub_button": [ ]
+                }
+            ]
+        }, 
+        {
+            "name": "关于我们",
+            "sub_button": [
+            	{
+            		"type": "click", 
+                    "name": "关于我们", 
+                    "key": "aboutus", 
+                    "sub_button": [ ]
+            	}
+            ]
+        }
+    ]
+}

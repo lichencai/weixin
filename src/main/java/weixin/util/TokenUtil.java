@@ -6,16 +6,19 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import net.sf.json.JSONObject;
+
 public class TokenUtil {
 	public final static String appID = "wx769fdfe12773b6be";
-	public final static String appSecret = "5a95b580c0b32d33cf66b6e16baedf5b";
+	public final static String secret = "5a95b580c0b32d33cf66b6e16baedf5b";
+	public static String access_token = null;
 	
-	public static String getToken(){
+	public static void getToken(){
+		
 		String token = null;
 		String url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="
 				+"wx769fdfe12773b6be"
-				+"&appSecret"+"5a95b580c0b32d33cf66b6e16baedf5b";
-		System.out.println(url);
+				+"&secret="+"5a95b580c0b32d33cf66b6e16baedf5b";
 		try {
 			URL urlGet = new URL(url);
 			HttpURLConnection http = (HttpURLConnection) urlGet.openConnection();
@@ -46,12 +49,15 @@ public class TokenUtil {
 			e.printStackTrace();
 		}
 		
-		return token;
+		
+		JSONObject jsonObj = JSONObject.fromObject(token);
+		
+		access_token = (String)jsonObj.get("access_token");
 	}
 	
 	public static void main(String[] args){
-		String token = TokenUtil.getToken();
-		System.out.println(token);
+		TokenUtil.getToken();
+		System.out.println(TokenUtil.access_token);
 	}
 	
 	
