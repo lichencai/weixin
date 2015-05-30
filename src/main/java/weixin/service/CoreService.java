@@ -23,12 +23,14 @@ public class CoreService {
      * @param request 
      * @return 
      */  
-    public static String processRequest(HttpServletRequest request) {  
+    public static String processRequest(HttpServletRequest request) {
     	String respMessage = null;
         try {
         	
             // xml请求解析  
-            Map<String, String> requestMap = MsgUtil.parseXml(request);  
+            Map<String, String> requestMap = MsgUtil.parseXml(request); 
+            logger.debug("=====================requestMap========================");
+            logger.debug(requestMap);
             
             // 发送方帐号（open_id）  
             String fromUserName = requestMap.get("FromUserName");  
@@ -36,8 +38,6 @@ public class CoreService {
             String toUserName = requestMap.get("ToUserName");  
             // 消息类型  
             String msgType = requestMap.get("MsgType");  
-            
-            
             
             // 文本消息  
             if (msgType.equals(MsgUtil.REQ_MESSAGE_TYPE_TEXT)) {

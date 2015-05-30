@@ -15,10 +15,9 @@
             "name": "好运来", 
             "sub_button": [
                 {
-                    "type": "pic_sysphoto", 
+                    "type": "view", 
                     "name": "首页", 
-                    "key": "rselfmenu_1_0", 
-                    "sub_button": [ ]
+                    "url":"http://lichencai.nat123.net/weixin/demo.html"
                  }, 
                 {
                     "type": "pic_photo_or_album", 
@@ -36,14 +35,8 @@
         }, 
         {
             "name": "关于我们",
-            "sub_button": [
-            	{
-            		"type": "click", 
-                    "name": "关于我们", 
-                    "key": "aboutus", 
-                    "sub_button": [ ]
-            	}
-            ]
+            "type": "view",
+            "url":"http://lichencai.nat123.net/weixin/html/aboutus.html"
         }
     ]
 }
