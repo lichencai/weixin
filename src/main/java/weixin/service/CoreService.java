@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import weixin.core.ClickEvent;
 import weixin.obj.Article;
 import weixin.resp.NewsMessage;
+import weixin.resp.TextMessage;
 import weixin.util.MsgUtil;
 
 public class CoreService {
@@ -42,6 +43,16 @@ public class CoreService {
             // 文本消息  
             if (msgType.equals(MsgUtil.REQ_MESSAGE_TYPE_TEXT)) {
             	
+            	TextMessage textMessage = new TextMessage();
+            	textMessage.setMsgType(MsgUtil.RESP_MESSAGE_TYPE_TEXT);
+            	textMessage.setToUserName(fromUserName);  
+            	textMessage.setFromUserName(toUserName);  
+            	textMessage.setCreateTime(new Date().getTime());  
+            	textMessage.setFuncFlag(0);
+            	
+            	textMessage.setContent("<a href=\"http://lichencai.nat123.net/weixin/html/jssdk.html\">jssdk</a>");
+            	
+            	respMessage = MsgUtil.textMessageToXml(textMessage);
             }else if (msgType.equals(MsgUtil.REQ_MESSAGE_TYPE_EVENT)) {  
                 // 事件类型  
                 String eventType = requestMap.get("Event");  
