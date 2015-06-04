@@ -13,6 +13,8 @@ import java.util.TreeMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.jdom.JDOMException;
+
 import weixin.wxap.util.MD5Util;
 import weixin.wxap.util.Sha1Util;
 import weixin.wxap.util.TenpayUtil;
