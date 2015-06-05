@@ -42,7 +42,7 @@ public class CoreServlet{
         if (SignUtil.checkSignature(signature, timestamp, nonce)) {  
             out.print(echostr);  
         }  
-        out.close();  
+        out.close(); 
         out = null;
     }  
   

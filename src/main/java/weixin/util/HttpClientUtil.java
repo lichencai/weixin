@@ -14,12 +14,17 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 
+import org.apache.log4j.Logger;
+
 public class HttpClientUtil {
 	
+	private static Logger logger = Logger.getLogger(HttpClientUtil.class);
 	
 	public static String httpRequest(String requestUrl, String requestMethod, String outputStr){
-		StringBuffer buffer = new StringBuffer();
 		
+		logger.debug("requestUrl: " + requestUrl + " requestMethod: " + requestMethod + " outputStr: " + outputStr);
+		
+		StringBuffer buffer = new StringBuffer();
 		try{
 			TrustManager[] tm = {new MyX509TrustManager()};
 			System.setProperty("https.protocols", "TLSv1");
@@ -71,11 +76,10 @@ public class HttpClientUtil {
 			is = null;
 			httpsUrlConn.disconnect();
 		}catch(ConnectException e){
-			//logger.debug(e);
+			logger.debug(e);
 		}catch(Exception e){
-			//logger.debug(e);
+			logger.debug(e);
 		}
-		System.out.print("end....");
 		return buffer.toString();
 	}
 }
