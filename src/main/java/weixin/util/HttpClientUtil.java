@@ -27,7 +27,7 @@ public class HttpClientUtil {
 		StringBuffer buffer = new StringBuffer();
 		try{
 			TrustManager[] tm = {new MyX509TrustManager()};
-			System.setProperty("https.protocols", "TLSv1");
+			// System.setProperty("https.protocols", "TLSv1");
 			SSLContext sslContext = SSLContext.getInstance("SSL","SunJSSE");
 			sslContext.init(null, tm, new java.security.SecureRandom());
 			
@@ -36,27 +36,27 @@ public class HttpClientUtil {
 			URL url = new URL(requestUrl);
 			HttpsURLConnection httpsUrlConn = (HttpsURLConnection)url.openConnection();
 			
-			HostnameVerifier hostNameVerify = new HostnameVerifier()  
+			/*HostnameVerifier hostNameVerify = new HostnameVerifier()  
 	        {  
-	            /** 
+	            *//** 
 	             * Always return true 
-	             */  
+	             *//*  
 	            public boolean verify(String urlHostName, SSLSession session)  
 	            {  
 	                return true;  
 	            }  
 	        }; 
 	        httpsUrlConn.setHostnameVerifier(hostNameVerify);
-	        
+	        */
 			httpsUrlConn.setSSLSocketFactory(ssf);
 			httpsUrlConn.setDoInput(true);
-			httpsUrlConn.setDoInput(true);
+			httpsUrlConn.setDoOutput(true);
 			httpsUrlConn.setUseCaches(false);
 			httpsUrlConn.setRequestMethod(requestMethod);
-			httpsUrlConn.setInstanceFollowRedirects(true);      
+			/*httpsUrlConn.setInstanceFollowRedirects(true);     */ 
 			httpsUrlConn.setRequestProperty("Content-Type "," application/x-www-form-urlencoded");
 			
-			httpsUrlConn.connect();
+			/*httpsUrlConn.connect();*/
 			
 			if(null != outputStr){
 				DataOutputStream out = new DataOutputStream(httpsUrlConn.getOutputStream());

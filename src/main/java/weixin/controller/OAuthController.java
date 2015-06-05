@@ -7,7 +7,9 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import weixin.service.OAuthService;
 
 @Controller
 @RequestMapping(value = "/oauth")
@@ -16,15 +18,18 @@ public class OAuthController {
 	private static Logger logger = Logger.getLogger(OAuthController.class);
 	
 	@RequestMapping(value = {"/redirect"}, method = RequestMethod.GET)
-	@ResponseBody
-	public void redirect(HttpServletRequest request, HttpServletResponse response){
+	public ModelAndView redirect(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		ModelAndView mav = new ModelAndView("oauth");
 		String code = request.getParameter("code");
 		String state = request.getParameter("state");
+		if(code == null){
+			response.sendRedirect("/error/oauthError.html");
+			return null;
+		}
 		
-		
-		
-		
-		logger.debug("code:" + code + " state:" + state);
+		String openid = OAuthService.getOauthAccessToke(code);
+		mav.addObject("openid",openid);
+		return mav;
 	}
 	
 }

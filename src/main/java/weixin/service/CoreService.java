@@ -50,7 +50,7 @@ public class CoreService {
             	textMessage.setCreateTime(new Date().getTime());  
             	textMessage.setFuncFlag(0);
             	
-            	textMessage.setContent("<a href=\"" + OAuthService.requestUrl + "\">jssdk</a>");
+            	textMessage.setContent("<a href=\"" + OAuthService.oauthCodeUrl + "\">“≥√Ê ⁄»®</a>");
             	
             	respMessage = MsgUtil.textMessageToXml(textMessage);
             }else if (msgType.equals(MsgUtil.REQ_MESSAGE_TYPE_EVENT)) {  
