@@ -9,16 +9,17 @@ import java.net.URL;
 import net.sf.json.JSONObject;
 
 public class TokenUtil {
-	public final static String appID = "wx769fdfe12773b6be";
-	public final static String secret = "5a95b580c0b32d33cf66b6e16baedf5b";
 	public static String access_token = null;
+	private static String url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=SECRET";
+	
+	static{
+		url = url.replace("APPID", SystemUtil.APPID).replace("SECRET", SystemUtil.SECRET);
+	}
 	
 	public static void getToken(){
 		
 		String token = null;
-		String url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="
-				+"wx769fdfe12773b6be"
-				+"&secret="+"5a95b580c0b32d33cf66b6e16baedf5b";
+		
 		try {
 			URL urlGet = new URL(url);
 			HttpURLConnection http = (HttpURLConnection) urlGet.openConnection();

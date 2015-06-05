@@ -1,10 +1,7 @@
-package weixin.util.menu;
+package weixin.util;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.ConnectException;
@@ -17,14 +14,10 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 
-import weixin.util.MyX509TrustManager;
-
-public class MenuUtil {
+public class HttpClientUtil {
 	
-	/*private static Logger logger = Logger.getLogger(MenuUtil.class);*/
 	
 	public static String httpRequest(String requestUrl, String requestMethod, String outputStr){
-		
 		StringBuffer buffer = new StringBuffer();
 		
 		try{
@@ -56,7 +49,7 @@ public class MenuUtil {
 			httpsUrlConn.setUseCaches(false);
 			httpsUrlConn.setRequestMethod(requestMethod);
 			httpsUrlConn.setInstanceFollowRedirects(true);      
-			httpsUrlConn.setRequestProperty("Content-Type "," application/x-www-form-urlencoded ");
+			httpsUrlConn.setRequestProperty("Content-Type "," application/x-www-form-urlencoded");
 			
 			httpsUrlConn.connect();
 			
@@ -85,42 +78,4 @@ public class MenuUtil {
 		System.out.print("end....");
 		return buffer.toString();
 	}
-	
-	
-	public void createMenu() throws IOException{
-		String url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
-		url = url.replace("ACCESS_TOKEN", "QkLFRQH3dLymvvAMrYwTkKr8CwhW2AZXr-SOU8mcra8LqBCFtrcMes_dEFPiv-3dNuIPqd8O5_FeICDhSjP37UwuHg3QpmqPGRYWpm9g7jk");
-		//logger.debug("createMenu url : " + url);
-		String fileName = "config/menu.file";
-		String content = null;
-		
-		ClassLoader classLoader = getClass().getClassLoader();  
-	    File file = new File(classLoader.getResource(fileName).getFile());  
-	    if(file.exists()){
-	    	FileInputStream fis = new FileInputStream(file);
-	    	byte b[]=new byte[(int)file.length()];
-	    	fis.read(b);
-	    	fis.close();
-	    	content = new String(b);
-	    }
-	    
-	    String result = MenuUtil.httpRequest(url, "POST", content);
-	    System.out.println(result);
-	    //logger.debug("createMenu result : " + result);
-	}
-	
-	public static void delMenu(){
-		String url = "https://api.weixin.qq.com/cgi-bin/menu/delete?access_token=ACCESS_TOKEN";
-		url = url.replace("ACCESS_TOKEN", "QkLFRQH3dLymvvAMrYwTkKr8CwhW2AZXr-SOU8mcra8LqBCFtrcMes_dEFPiv-3dNuIPqd8O5_FeICDhSjP37UwuHg3QpmqPGRYWpm9g7jk");
-		String result = MenuUtil.httpRequest(url, "GET", null);
-	    System.out.println(result);
-	}
-	
-	
-	
-	public static void main(String[] args) throws IOException{
-		/*MenuUtil.delMenu();*/
-		new MenuUtil().createMenu();
-	}
-	
 }

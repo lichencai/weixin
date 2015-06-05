@@ -11,11 +11,7 @@ import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
-/**
- * xmlπ§æﬂ¿‡
- * @author miklchen
- *
- */
+
 public class XMLUtil {
 
 	/**

@@ -24,8 +24,8 @@ import com.sun.org.apache.xalan.internal.xsltc.runtime.Hashtable;
 
 
 /**
- * 微信支付服务器签名支付请求应答类
- * api说明： 
+ *  微信支付服务器签名支付请求应答类
+ *  api说明： 
  *  getKey()/setKey(),获取/设置密钥
  *  getParameter()/setParameter(),获取/设置参数值 getAllParameters(),获取所有参数
  *  isTenpaySign(),是否财付通签名,true:是 false:否
