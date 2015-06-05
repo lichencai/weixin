@@ -29,6 +29,7 @@ public class OAuthService {
 	
 	//  根据CODE获取openid
 	public static String getOauthAccessToke(String code){
+		logger.debug("getOauthAccessToke ==> code:" + code);
 		String openid = null;
 		oauthAccessTokenUrl = oauthAccessTokenUrl.replace("CODE", code);
 		String result = HttpClientUtil.httpRequest(oauthAccessTokenUrl, "POST", null);

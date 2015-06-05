@@ -13,7 +13,6 @@ import java.util.SortedMap;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
-import org.jdom.JDOMException;
 
 import weixin.wxap.util.MD5Util;
 import weixin.wxap.util.TenpayUtil;

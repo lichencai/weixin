@@ -7,10 +7,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.JDOMException;
-import org.jdom.input.SAXBuilder;
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
 
 public class XMLUtil {
 
@@ -21,31 +20,24 @@ public class XMLUtil {
 	 * @throws JDOMException
 	 * @throws IOException
 	 */
-	public static Map doXMLParse(String strxml) throws JDOMException, IOException {
+	public static Map doXMLParse(String strxml) throws Exception {
 		if(null == strxml || "".equals(strxml)) {
 			return null;
 		}
 		
 		Map m = new HashMap();
 		InputStream in = HttpClientUtil.String2Inputstream(strxml);
-		SAXBuilder builder = new SAXBuilder();
-		Document doc = builder.build(in);
-		Element root = doc.getRootElement();
-		List list = root.getChildren();
-		Iterator it = list.iterator();
-		while(it.hasNext()) {
-			Element e = (Element) it.next();
-			String k = e.getName();
-			String v = "";
-			List children = e.getChildren();
-			if(children.isEmpty()) {
-				v = e.getTextNormalize();
-			} else {
-				v = XMLUtil.getChildrenText(children);
-			}
-			
-			m.put(k, v);
-		}
+		SAXReader reader = new SAXReader();
+		Document doc = reader.read(in);
+		Document document = reader.read(in);  
+	    // 得到xml根元素  
+	    Element root = document.getRootElement();  
+	    // 得到根元素的所有子节点  
+	    List<Element> elementList = root.elements();  
+	  
+	    // 遍历所有子节点  
+	    for (Element e : elementList)  
+	        m.put(e.getName(), e.getText());  
 		
 		//关闭流
 		in.close();
@@ -58,7 +50,7 @@ public class XMLUtil {
 	 * @param children
 	 * @return String
 	 */
-	public static String getChildrenText(List children) {
+	/*public static String getChildrenText(List children) {
 		StringBuffer sb = new StringBuffer();
 		if(!children.isEmpty()) {
 			Iterator it = children.iterator();
@@ -77,7 +69,7 @@ public class XMLUtil {
 		}
 		
 		return sb.toString();
-	}
+	}*/
 	
 	/**
 	 * 获取xml编码字符集
@@ -86,12 +78,13 @@ public class XMLUtil {
 	 * @throws IOException 
 	 * @throws JDOMException 
 	 */
-	public static String getXMLEncoding(String strxml) throws JDOMException, IOException {
+	public static String getXMLEncoding(String strxml) throws Exception {
 		InputStream in = HttpClientUtil.String2Inputstream(strxml);
-		SAXBuilder builder = new SAXBuilder();
-		Document doc = builder.build(in);
+		SAXReader reader = new SAXReader();
+		Document doc = reader.read(in);
 		in.close();
-		return (String)doc.getProperty("encoding");
+		return doc.getXMLEncoding();
+		/*return (String)doc.getProperty("encoding");*/
 	}
 	
 	

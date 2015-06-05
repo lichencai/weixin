@@ -14,18 +14,29 @@
 	$(function(){
 		$("#pay").click(function(){
 			
-			var obj = "{openid : '${openid}'}";
+			var obj = {openid : '${openid}'};
 			alert(obj);
 			
 			
 			$.ajax({
 				url:"/weixin/web/pay/notify_url",
 				type : "post",
-				data:obj,
+				data : obj,
 				dataType : "json",
 				success : function(json) {
-					
+					alert("return_code");
 					alert(json.return_code);
+					
+					alert("appid");
+					alert(json.appid);
+					alert("timeStamp");
+					alert(json.timeStamp);
+					alert("package");
+					alert(json.package);
+					alert("signType");
+					alert(json.signType);
+					alert("sign");
+					alert(json.sign);
 					
 					/* if(parseInt(obj.agent)<5){  
 		                alert("您的微信版本低于5.0无法使用微信支付");  
@@ -37,15 +48,18 @@
 		                "appId" : json.appid,                  //公众号名称，由商户传入  
 		                "timeStamp":json.timeStamp,          //时间戳，自 1970 年以来的秒数  
 		                "nonceStr" : json.nonce_str,         //随机串  
-		                "package" : "prepay_id=" + obj.prepay_id,      //<span style="font-family:微软雅黑;">商品包信息</span>  
+		                "package" : "prepay_id=" + json.package,      //<span style="font-family:微软雅黑;">商品包信息</span>  
 		                "signType" : json.signType,        //微信签名方式:  
 		                "paySign" : json.sign           //微信签名  
 		                },
 		                function(res){ 
+		                	alert("=======");
 		                    alert(res.err_msg);  
-			                if(res.err_msg == "get_brand_wcpay_request:ok" ) { 
-			                    window.location.href=obj.sendUrl;  
+			                if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+			                	alert("-------");
+			                    alert(res);
 			                }else{
+			                	alert("+++++++");
 			                    alert("fail");  
 			                }
 		                });

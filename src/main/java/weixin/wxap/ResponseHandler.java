@@ -13,8 +13,6 @@ import java.util.TreeMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.jdom.JDOMException;
-
 import weixin.wxap.util.MD5Util;
 import weixin.wxap.util.Sha1Util;
 import weixin.wxap.util.TenpayUtil;
@@ -131,7 +129,7 @@ public class ResponseHandler {
 	public SortedMap getAllParameters() {
 		return this.parameters;
 	}
-	public void doParse(String xmlContent) throws JDOMException, IOException {
+	public void doParse(String xmlContent) throws Exception {
 		this.parameters.clear();
 		//½âÎöxml,µÃµ½map
 		Map m = XMLUtil.doXMLParse(xmlContent);
