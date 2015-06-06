@@ -14,6 +14,7 @@ import weixin.obj.Article;
 import weixin.resp.NewsMessage;
 import weixin.resp.TextMessage;
 import weixin.util.MsgUtil;
+import weixin.util.WxUtil;
 
 public class CoreService {
 	
@@ -29,7 +30,7 @@ public class CoreService {
         try {
         	
             // xml«Î«ÛΩ‚Œˆ  
-            Map<String, String> requestMap = MsgUtil.parseXml(request); 
+            Map<String, String> requestMap = WxUtil.parseXml(request); 
             logger.debug("=====================requestMap========================");
             logger.debug(requestMap);
             

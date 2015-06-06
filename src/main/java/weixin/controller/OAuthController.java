@@ -26,7 +26,7 @@ public class OAuthController {
 			response.sendRedirect("/error/oauthError.html");
 			return null;
 		}
-		
+		logger.debug("redirect OAuthService.oauthCodeUrl : " + OAuthService.oauthCodeUrl);
 		String openid = OAuthService.getOauthAccessToke(code);
 		mav.addObject("openid",openid);
 		return mav;

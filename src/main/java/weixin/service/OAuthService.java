@@ -23,16 +23,18 @@ public class OAuthService {
 				.replace("SCOPE", "snsapi_base");
 		
 		oauthAccessTokenUrl = oauthAccessTokenUrl.replace("APPID", SystemUtil.APPID).replace("SECRET", SystemUtil.SECRET);
-		
-		logger.debug("oauthCodeUrl : " + oauthCodeUrl);
 	}
 	
 	//  根据CODE获取openid
 	public static String getOauthAccessToke(String code){
 		logger.debug("getOauthAccessToke ==> code:" + code);
 		String openid = null;
-		oauthAccessTokenUrl = oauthAccessTokenUrl.replace("CODE", code);
+		oauthAccessTokenUrl = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE"
+				+ "&grant_type=authorization_code";
+		oauthAccessTokenUrl = oauthAccessTokenUrl.replace("APPID", SystemUtil.APPID).
+				replace("SECRET", SystemUtil.SECRET).replace("CODE", code);;
 		String result = HttpClientUtil.httpRequest(oauthAccessTokenUrl, "POST", null);
+		logger.debug("getOauthAccessToke ==> result:" + result);
 		JSONObject jsonObj = JSONObject.fromObject(result);
 		openid = jsonObj.getString("openid");
 		return openid;
