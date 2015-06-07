@@ -19,7 +19,7 @@ public class OAuthService {
 	
 	static{
 		oauthCodeUrl = oauthCodeUrl.replace("APPID", SystemUtil.APPID).replace("SECRET", SystemUtil.SECRET)
-				.replace("REDIRECT_URI", "http://lichencai.nat123.net/weixin/web/oauth/redirect")
+				.replace("REDIRECT_URI", SystemUtil.OAUTH_REDIRECT)
 				.replace("SCOPE", "snsapi_base");
 		
 		oauthAccessTokenUrl = oauthAccessTokenUrl.replace("APPID", SystemUtil.APPID).replace("SECRET", SystemUtil.SECRET);

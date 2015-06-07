@@ -15,11 +15,12 @@
 	
 	var appId,timeStamp,nonceStr,varpackage,signType,paySign;
 	
+	//alert(location.href.split('#')[0]);
+	
 	var jssdkURL = "http://lichencai.nat123.net/weixin/web/oauth/redirect";
-	var wxConfig = {jssdkURL : jssdkURL};
+	var wxConfig = {jssdkURL : location.href.split('#')[0]};
 	
 	$(function(){
-		alert(wxConfig);
 		
 		$.ajax({
 			
@@ -43,11 +44,23 @@
 			
 		});
 		
+		wx.ready(function(){
+			/* wx.checkJsApi({
+			    jsApiList: ['chooseImage'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+			    success: function(res) {
+			        // 以键值对的形式返回，可用的api值true，不可用为false
+			        // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+			    }
+			}); */
+		});
+		
+		
 		$("#pay").click(function(){
 			
-			var obj = {openid : '${openid}'};
-			alert(obj);
-			/* 
+			var obj = {openid : $("#openid").val()};
+			
+			alert(obj.openid);
+			
 			$.ajax({
 				url:"/weixin/web/pay/getPayData",
 				type : "post",
@@ -73,7 +86,7 @@
 					
 				}
 			 });
-			 */
+			 
 		})
 	})
 </script>
@@ -83,6 +96,6 @@
 <body>
 
 <input id="pay" type="button" value="支付"/>
-
+<input id="openid" type="hidden" value="<%=request.getAttribute("openid")%>">
 </body>
 </html>
