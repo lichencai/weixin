@@ -28,6 +28,7 @@ public class PayController {
 	@RequestMapping(value = {"/getPayData"}, method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
 	public SortedMap<Object, Object> getPayData(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		
 		String openid = request.getParameter("openid");
 		String spbill_create_ip = request.getRemoteAddr();
 		Map<String, Object> map = PayService.unifiedorder(openid, spbill_create_ip);
@@ -42,16 +43,13 @@ public class PayController {
 		signMap.put("package", "prepay_id=" + (String)map.get("prepay_id"));
 		signMap.put("signType", map.get("signType"));
 		
-		logger.debug("===========[pay] signMap==========");
-		logger.debug(signMap);
-		
 		signMap.put("paySign", WxUtil.createSign("UTF-8", signMap));
-		logger.debug(signMap);
 		
 		String userAgent = request.getHeader("user-agent");
         char agent = userAgent.charAt(userAgent.indexOf("MicroMessenger")+15);
         signMap.put("agent", new String(new char[]{agent}));//微信版本号，用于前面提到的判断用户手机微信的版本是否是5.0以上版本.
         return signMap;
+        
 	}
 	
 	
