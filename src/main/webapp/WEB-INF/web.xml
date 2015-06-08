@@ -17,7 +17,7 @@
 
 	<servlet-mapping>
 		<servlet-name>weixin</servlet-name>
-		<url-pattern>/web/*</url-pattern>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
     <!-- 配置spring的拦截器  -->
     

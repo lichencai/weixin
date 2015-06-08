@@ -6,7 +6,7 @@ public class SystemUtil {
 	public final static String SECRET = "9cc084e873e077b8e9832a6ccf03613f";
 	public final static String TOKEN = "lichencai";
 	public final static String MCH_ID = "1241661102";
-	public final static String NOTIFY_URL = "http://haoyunlai158.com/weixin/web/pay/notify_url";
+	public final static String NOTIFY_URL = "http://haoyunlai158.com/weixin/web/oauth/notify_url";
 	public final static String OAUTH_REDIRECT = "http://haoyunlai158.com/weixin/web/oauth/redirect";
 	public final static String API_KEY = "fdoikjmnhy58Kiujfyh90lkmjyseFVhy";
 	public final static String SUCCESS = "SUCCESS";
