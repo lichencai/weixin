@@ -33,7 +33,7 @@ public class JSSDKControll {
 		SortedMap<String, String> map = new TreeMap<String, String>();
 		String noncestr = Sha1Util.getNonceStr();
 		String jsapi_ticket = SystemUtil.JSAPI_TICKET;
-		String timestamp = new Date().getTime() / 1000 + "";
+		String timestamp = new Date().getTime() / 1000 + "";			//  JSSDK的时间戳为秒
 		map.put("noncestr", noncestr);map.put("jsapi_ticket", jsapi_ticket);
 		map.put("timestamp", timestamp);map.put("url", url);
 		String sign = Sha1Util.createSHA1Sign(map);

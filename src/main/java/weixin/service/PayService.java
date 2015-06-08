@@ -70,7 +70,7 @@ public class PayService {
 				result.put("prepay_id", (String)respMap.get("prepay_id"));
 				
 				//  Ôö¼ÓµÄ×Ö¶Î
-				result.put("timeStamp", new Date().getTime());
+				result.put("timeStamp", new Date().getTime() / 1000 + "");
 				result.put("signType", "MD5");
 			}
 		}else{

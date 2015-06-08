@@ -1,0 +1,197 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>会员登录</title>
+		<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,target-densitydpi=medium"/>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta content="telephone=no" name="format-detection" />
+		<meta content="email=no" name="format-detection" />
+		
+		
+		<link type="text/css" rel="stylesheet" href="/css/wap/base.css" />
+		<script type="text/javascript">
+		    var Domain=document.domain;
+		    Domain=Domain.toLowerCase();
+		    var tmp_arr=Domain.match(/[\w][\w-]*\.(?:com\.cn|com|cn|co|net|org|gov|cc|biz|info|hn|xyz|hk)(\/|$)/);
+		    Domain=tmp_arr[0];
+		    document.domain = Domain;
+		    var user_name = "wcqyzx";
+		    var aGlobalBannerHeight = {};
+		</script>
+		
+		
+		<script type="text/javascript" src="/include/cookies.js"></script>
+		<script type="text/javascript" src="/include/jquery-1.7.1.min.js"></script>
+		
+		<style type="text/css">
+		body,td,th {
+			font-family: \5FAE\8F6F\96C5\9ED1, Helvetica, "黑体", Arial, Tahoma;
+		}
+		</style>
+		
+		
+		<script type="text/javascript" src="/js/wap/nav.js?ver348"></script>
+		<script type="text/javascript" src="/js/wap/swipe.js?ver348"></script>
+		<script type="text/javascript" src="/js/wap/ajax_info.js?ver348"></script>
+		<script type="text/javascript" src="/js/wap/public.js?ver348"></script>
+		<link type="text/css" rel="stylesheet" href="/css/wap/web_frame.css??ver348" />
+		<link type="text/css" rel="stylesheet" href="/css/wap/change_module.css?ver348" />
+		<link id="webSkinCss" type="text/css" rel="stylesheet" href="/templates/wapother4/css/webskin.css?ver348" />
+		<link id="webSkinCss" type="text/css" rel="stylesheet" href="/templates/wapother4/skin_4/style.css?ver348" />
+		<!--change_top_tpl-->
+		<link type="text/css" rel="stylesheet" href="/css/wap/new/index.css?ver348" >
+		
+		
+<!-- <link type="text/css" rel="stylesheet" href="/css/wap/classStyle.css?ver348" > -->
+<script type="text/javascript" src="/js/wap/new_wap_public.js?ver348"></script>
+<script type="text/javascript" src="/js/wap/wapShare.js?ver348"></script>
+<script type="text/javascript" src="/js/wap/doc_json.js?ver348"></script>
+<link type="text/css" rel="stylesheet" href="/css/wap/icomoon_style.css?ver348" />
+
+<link type="text/css" rel="stylesheet" href="/images/wap/web_style/module_style/Module_style.css?ver348" />
+<link type="text/css" rel="stylesheet" href="/images/wap/web_style/hmo_style/HMo_style.css?ver348" />
+<link type="text/css" rel="stylesheet" href="/wap/include/user_define_css.php?user_id=720986&channel_id=0&timestamp=1432174507" />
+<script src="/js/tj/model_banner.js?ver348" type="text/javascript"></script>
+
+<style type="text/css">
+  .ev_empy{display: block;}
+</style>
+
+</head>
+
+
+<body style="height:100%;">
+<div  class="wrapper" id="wrapper">
+  <div class="main" style="background:#F5F5F5">
+    <div class="trainModule">
+      <div class="ev_t_product_pjs">
+        <div class="ev_t_product_pj_tit">
+          <div class="ev_t_product_pj_t">
+            <a href="/wap_wcqyzx.html?showWelcome=1" class="ev_t_product_run" ></a><div class="ev_t_product_span">会员登录</div>
+          </div>
+        </div>
+      </div>
+      <div class="ev_t_product_ge"><b></b></div>
+      <div class="ev_t_product_xq">
+        <div class="ev_t_phone_login_form">
+          <form action="/dom/denglu.php?username=wcqyzx"  method="post"  name="myfrom" id="myfrom">
+                        <input type="hidden" name="wap" value="1">
+            <input type="hidden" value="http://wap.ev123.com/wap_wcqyzx.html?showWelcome=1" name="trespass" id="trespass" />
+            <div class="ev_t_phone_zh">
+              <div class="ev_t_phone_yh">
+                <div class="ev_list_data_input"><input type="text" class="tInputObj" name="login_name" id="login_name" placeholder="请输入用户名" /></div>
+                <div class="ev_empy"><p id="login_name_msg" class="hint"></p></div>
+              </div>
+              <div class="ev_t_phone_mm">
+                <div class="ev_list_data_input"> <input type="password" class="pInputObj" name="login_pwd" id="login_pwd" placeholder="请输入密码" /></div>
+                <div class="ev_empy"><p id="login_pwd_msg" class="hint"></p></div>
+              </div>
+            </div>
+            <div class="ev_t_phone_but">
+              <a href="javascript:;" id="loginBut">登录</a>
+            </div>
+            <div class="ev_t_phone_but">
+              <a href="/dom/zhuce.php?username=wcqyzx&wap=1">没有账号，请注册</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ <script language="javascript">
+		var iLoginErrorCount = 0;
+		$("#loginBut").on('click', function() {
+			remove_error_msg();
+			iLoginErrorCount = 0;
+
+			$('#login_name').trigger('blur');
+			$('#login_pwd').trigger('blur');
+
+			if (parseInt(iLoginErrorCount) > 0) {
+				return false;
+			} else {
+				$("#myfrom").submit();
+			}
+		})
+
+
+		$('#login_name').on('blur',function(){
+			remove_error_msg();
+			var username = $.trim($('#login_name').val());
+
+			if (username.length == 0) {
+				$("#login_name_msg").html('<span class="caution">用户名不能为空！</span>');
+				iLoginErrorCount++;
+				return false;
+			}else if(public.yzUsername(username)==false){
+				$("#login_name_msg").html('<span class="error">用户名为6-20个字符(字母/数字/下划线)！</span>');
+				iLoginErrorCount++;
+				return false
+			} else {
+				$("#login_name_msg").html('');
+			}
+		});
+
+		$('#login_pwd').on('blur',function(){
+			remove_error_msg();
+			var password = $.trim($('#login_pwd').val());
+
+			if (password.length == 0) {
+				$("#login_pwd_msg").html('<span class="caution">密码不能为空！</span>');
+				iLoginErrorCount++;
+				return false;
+			}else if(public.yzUsername(password)==false){
+				$("#login_pwd_msg").html('<span class="error">密码为6-20个字符(字母/数字/下划线)！</span>');
+				iLoginErrorCount++;
+				return false
+			} else {
+				$("#login_pwd_msg").html('');
+			}
+		});
+
+		function remove_error_msg() {
+			if($("#error_msg")[0]){
+				$("#error_msg").html("");
+			}
+		}
+	</script>
+  <script type="text/javascript">
+//判断是否为微信
+function is_weixn(){
+  var ua = navigator.userAgent.toLowerCase();
+  if(ua.match(/MicroMessenger/i)=="micromessenger") {
+     return false;
+  } else {
+    return true;
+  }
+}
+var is_weixn = is_weixn();
+if (is_weixn){
+  writeCookie('openid','',168);
+  var shareModule = $('#shareModule li');
+  if (shareModule.length > 0 ){
+    shareModule.find('.weixin').parent().remove();
+  }
+}
+</script>
+<script type="text/javascript" src="/js/wap/self_edit.js?ver348"></script>
+
+<script language="javascript">
+  var windowW = $(window).width(),windowH = $(window).height();
+  $(window).resize(function(){
+      })
+$(function(){
+  });
+  
+</script>
+</div>
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fc6b5447597e82209184ac3202de17b2d' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<center></center>
+</body>
+</html>

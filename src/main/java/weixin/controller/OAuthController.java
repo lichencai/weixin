@@ -24,7 +24,7 @@ public class OAuthController {
 	
 	@RequestMapping(value = {"/redirect"}, method = RequestMethod.GET)
 	public ModelAndView redirect(HttpServletRequest request, HttpServletResponse response) throws Exception{
-		ModelAndView mav = new ModelAndView("oauth");
+		ModelAndView mav = new ModelAndView("pay/oauth");
 		String code = request.getParameter("code");
 		String state = request.getParameter("state");
 		if(code == null){
