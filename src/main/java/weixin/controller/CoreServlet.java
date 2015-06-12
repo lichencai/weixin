@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +20,9 @@ import weixin.util.SignUtil;
 public class CoreServlet{  
   
     private static Logger logger = Logger.getLogger(CoreServlet.class);
+    
+    @Autowired
+    private CoreService coreService;
     
     /** 
      * 确认请求来自微信服务器 
@@ -58,7 +62,7 @@ public class CoreServlet{
     	logger.debug("into...");
     	
         // 调用核心业务类接收消息、处理消息  
-        String respMessage = CoreService.processRequest(request);  
+        String respMessage = coreService.processRequest(request);  
           
         // 响应消息  
         PrintWriter out = response.getWriter();  

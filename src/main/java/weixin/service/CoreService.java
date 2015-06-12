@@ -8,6 +8,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import weixin.core.ClickEvent;
 import weixin.obj.Article;
@@ -16,16 +18,25 @@ import weixin.resp.TextMessage;
 import weixin.util.MsgUtil;
 import weixin.util.WxUtil;
 
+@Service("coreService")
 public class CoreService {
 	
 	private static Logger logger = Logger.getLogger(CoreService.class);
+	
+	@Autowired
+	private TextService textService;
+	@Autowired
+	private SubscribeService subscribeService;
+	
+	
+	
 	/** 
      * 处理微信发来的请求 
      *  
      * @param request 
      * @return 
      */  
-    public static String processRequest(HttpServletRequest request) {
+    public String processRequest(HttpServletRequest request) {
     	String respMessage = null;
         try {
         	
@@ -43,27 +54,18 @@ public class CoreService {
             
             // 文本消息  
             if (msgType.equals(MsgUtil.REQ_MESSAGE_TYPE_TEXT)) {
-            	
-            	TextMessage textMessage = new TextMessage();
-            	textMessage.setMsgType(MsgUtil.RESP_MESSAGE_TYPE_TEXT);
-            	textMessage.setToUserName(fromUserName);  
-            	textMessage.setFromUserName(toUserName);  
-            	textMessage.setCreateTime(new Date().getTime());  
-            	textMessage.setFuncFlag(0);
-            	
-            	textMessage.setContent("<a href=\"" + OAuthService.oauthCodeUrl + "\">页面授权</a>");
-            	
+            	TextMessage textMessage = textService.responseText(requestMap);
             	respMessage = MsgUtil.textMessageToXml(textMessage);
             }else if (msgType.equals(MsgUtil.REQ_MESSAGE_TYPE_EVENT)) {  
                 // 事件类型  
                 String eventType = requestMap.get("Event");  
                 // 订阅  
                 if (eventType.equals(MsgUtil.EVENT_TYPE_SUBSCRIBE)) { 
-                	
+                	subscribeService.doSubscribe(requestMap);
                 }  
                 // 取消订阅  
-                else if (eventType.equals(MsgUtil.EVENT_TYPE_UNSUBSCRIBE)) {  
-                    // TODO 取消订阅后用户再收不到公众号发送的消息，因此不需要回复消息  
+                else if (eventType.equals(MsgUtil.EVENT_TYPE_UNSUBSCRIBE)) {
+                	
                 }  
                 // 自定义菜单点击事件  
                 else if (eventType.equals(MsgUtil.EVENT_TYPE_CLICK)) { 

@@ -17,19 +17,12 @@
                 {
                     "type": "view", 
                     "name": "首页", 
-                    "url":"http://lichencai.nat123.net/weixin/demo.html"
+                    "url":"http://lichencai.nat123.net/weixin/html/demo.html"
                  }, 
                 {
-                    "type": "pic_photo_or_album", 
-                    "name": "登陆", 
-                    "key": "rselfmenu_1_1", 
-                    "sub_button": [ ]
-                }, 
-                {
-                    "type": "pic_weixin", 
+                    "type": "view", 
                     "name": "我的空间", 
-                    "key": "rselfmenu_1_2", 
-                    "sub_button": [ ]
+                    "url":"http://lichencai.nat123.net/weixin/html/demo.html"
                 }
             ]
         }, 

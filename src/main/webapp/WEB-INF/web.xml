@@ -7,6 +7,10 @@
     
     <display-name>weixin</display-name> 
     
+    <!-- <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:config/applicationContext.xml</param-value>
+    </context-param> -->
     
     <!-- 配置spring的拦截器  -->
     <servlet>
@@ -18,6 +22,15 @@
 	<servlet-mapping>
 		<servlet-name>weixin</servlet-name>
 		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>  
+    <servlet-name>default</servlet-name>  
+	    <url-pattern>/css/*</url-pattern>
+	    <url-pattern>/error/*</url-pattern>
+	    <url-pattern>/html/*</url-pattern>
+		<url-pattern>/img/*</url-pattern>
+		<url-pattern>/js/*</url-pattern>
+    	<url-pattern>/jsp/*</url-pattern>  
 	</servlet-mapping>
     <!-- 配置spring的拦截器  -->
     
@@ -36,9 +49,6 @@
 	<listener>  
 	    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	<listener>
-	  <listener-class>weixin.util.Log4jlistener</listener-class>
-	 </listener>
     <!--Spring ApplicationContext 载入 -->  
     
     <!-- 强制转码 -->

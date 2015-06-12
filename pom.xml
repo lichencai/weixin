@@ -44,25 +44,17 @@
 		<artifactId>xstream</artifactId>
 		<version>1.2.2</version>
 	</dependency>
-	<dependency>
+	<!-- <dependency>
 		<groupId>dom4j</groupId>
 		<artifactId>dom4j</artifactId>
 		<version>1.6.1</version>
-	</dependency>
-	<!-- <dependency>  
-    <groupId>javax.servlet</groupId>  
-    <artifactId>org.jdom</artifactId>  
-        <version>1.1.1</version>  
-        <scope>system</scope>  
-        本地jar的路径,相对或者绝对都可以  
-        <systemPath>E:\maven\jar\jdom.jar</systemPath>  
 	</dependency> -->
 	<!-- log4j -->
-    <dependency>
+    <!-- <dependency>
 	  <groupId>log4j</groupId>
 	  <artifactId>log4j</artifactId>
 	  <version>1.2.9</version>
-	</dependency>
+	</dependency> -->
 	<dependency>
         <groupId>org.codehaus.jackson</groupId>
         <artifactId>jackson-xc</artifactId>
@@ -74,11 +66,11 @@
 		<version>2.1</version>
 		<classifier>jdk15</classifier>
 	</dependency>
-	<dependency>
+	<!-- <dependency>
 		<groupId>com.github.mcpat.slf4j</groupId>
 		<artifactId>slf4cldc-api</artifactId>
 		<version>1.6.0</version>
-	</dependency>
+	</dependency> -->
     
     <!-- spring begin -->  
     <dependency> 
@@ -134,6 +126,74 @@
       <version>1.1.0.RELEASE</version> 
     </dependency>  
     <!-- spring end -->
+    <!-- hibernate begin -->
+    
+    <dependency>
+		<groupId>antlr</groupId>
+		<artifactId>antlr</artifactId>
+		<version>2.7.7</version>
+	</dependency>
+    
+    <dependency>
+		<groupId>dom4j</groupId>
+		<artifactId>dom4j</artifactId>
+		<version>1.6.1</version>
+	</dependency>
+    
+    
+    <dependency>
+		<groupId>org.hibernate.common</groupId>
+		<artifactId>hibernate-commons-annotations</artifactId>
+		<version>4.0.2.Final</version>
+	</dependency>
+    
+    <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-core</artifactId>
+        <version>4.2.17.Final</version>
+    </dependency>
+    
+    <dependency>
+		<groupId>org.hibernate.javax.persistence</groupId>
+		<artifactId>hibernate-jpa-2.0-api</artifactId>
+		<version>1.0.1.Final</version>
+	</dependency>
+    
+    <dependency>
+        <groupId>org.javassist</groupId>
+        <artifactId>javassist</artifactId>
+        <version>3.18.1-GA</version>
+    </dependency>
+    
+    <dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-c3p0</artifactId>
+		<version>4.2.17.Final</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-entitymanager</artifactId>
+		<version>4.2.17.Final</version>
+	</dependency>
+    
+    <!-- 这个可以替换log4j和slf4j -->
+    <dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-log4j12</artifactId>
+		<version>1.7.2</version>
+	</dependency>
+    
+    <dependency>
+    	<groupId>mysql</groupId>
+    	<artifactId>mysql-connector-java</artifactId>
+    	<version>5.1.21</version>
+    </dependency>
+    
+    <!-- hibernate end -->
+    
+    
+    
     </dependencies>
   <build>
     <finalName>weixin</finalName>
