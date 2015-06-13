@@ -25,7 +25,8 @@ public class TextService {
     	textMessage.setCreateTime(new Date().getTime());  
     	textMessage.setFuncFlag(0);
     	
-    	textMessage.setContent("<a href=\"" + OAuthService.oauthCodeUrl + "\">页面授权</a>");
+    	//  textMessage.setContent("<a href=\"" + OAuthService.oauthCodeUrl + "\">页面授权</a>");
+        textMessage.setContent("<a href=\"" + "http://lichencai.nat123.net/weixin/web/index/welcome" + "\">页面授权</a>");
     	return textMessage;
 	}
 	
