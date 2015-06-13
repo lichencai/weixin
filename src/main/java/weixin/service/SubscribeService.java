@@ -7,7 +7,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import weixin.dao.WxUserInfoDAO;
 import weixin.dao.entity.WxUserInfo;
 import weixin.dao.jdbc.WxUserInfoJDBC;
 
@@ -15,9 +14,6 @@ import weixin.dao.jdbc.WxUserInfoJDBC;
 public class SubscribeService {
 	
 	private static Logger logger = Logger.getLogger(SubscribeService.class);
-	
-	//@Autowired
-	private WxUserInfoDAO wxUserInfoDAO;
 	
 	@Autowired
 	private WxUserInfoJDBC wxUserInfoJDBC;

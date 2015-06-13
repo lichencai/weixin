@@ -25,14 +25,15 @@ public class OAuthController {
 	@RequestMapping(value = {"/redirect"}, method = RequestMethod.GET)
 	public ModelAndView redirect(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		ModelAndView mav = new ModelAndView("pay/oauth");
-		String code = request.getParameter("code");
+		/*String code = request.getParameter("code");
 		String state = request.getParameter("state");
 		if(code == null){
-			response.sendRedirect("/error/oauthError.html");
+			response.sendRedirect("/weixin/error/oauthError.html");
 			return null;
 		}
 		logger.debug("redirect OAuthService.oauthCodeUrl : " + OAuthService.oauthCodeUrl);
-		String openid = OAuthService.getOauthAccessToke(code);
+		String openid = OAuthService.getOauthAccessToke(code);*/
+		String openid = "odZyht0mu6k2frRLpRe-1JSerpOA";
 		mav.addObject("openid",openid);
 		return mav;
 	}

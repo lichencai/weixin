@@ -14,7 +14,7 @@ public class WxArticle implements Serializable{
 	private String type;
 	private String content;
 	private String status;
-	private int price;
+	private Integer price;
 	private Date createtime;
 	public Integer getId() {
 		return id;
@@ -46,10 +46,10 @@ public class WxArticle implements Serializable{
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public int getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 	public Date getCreatetime() {
