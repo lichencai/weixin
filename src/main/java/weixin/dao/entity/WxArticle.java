@@ -11,6 +11,7 @@ public class WxArticle implements Serializable{
 	private static final long serialVersionUID = 1574074044883132271L;
 	private Integer id;
 	private String title;
+	private String summary;
 	private String type;
 	private String content;
 	private String status;
@@ -27,6 +28,12 @@ public class WxArticle implements Serializable{
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public String getSummary() {
+		return summary;
+	}
+	public void setSummary(String summary) {
+		this.summary = summary;
 	}
 	public String getType() {
 		return type;

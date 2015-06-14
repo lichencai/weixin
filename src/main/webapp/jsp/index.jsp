@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -31,21 +32,26 @@
     <div data-role="content" data-theme="c">
 	    <div data-role="navbar">
 		    <ul>
-		      <li><a href="/weixin/html/page1.html" >今日资讯</a></li>
+		      <li><a href="/weixin/html/page1.html"  target="_blank">今日资讯</a></li>
 		      <li><a href="#anylink">新闻类</a></li>
 		      <li><a href="#anylink">财经类</a></li>
 		    </ul>
 		 </div>
 		 <div class="ui-grid-a">
 		 	<div class="ui-block-a">
+		 		
 		 		<div class="ui-bar ui-bar-e" style="height:129px">
-		 			<a href="/weixin/web/article/show">中共中央纪念陈云诞辰110周年</a>
+		 			<a href="/weixin/web/article/show" target="_blank">中共中央纪念陈云诞辰110周年</a>
 		 			中共中央12日上午在人民大会堂举行座谈会，纪念陈云同志诞辰110周年。中共中央总书记、国家主席、中央军委主席习近平发表重要讲话
 		 		</div>
-		 		<div class="ui-bar ui-bar-e" style="height:120px">A</div>
-		 		<div class="ui-bar ui-bar-e" style="height:120px">A</div>
-		 		<div class="ui-bar ui-bar-e" style="height:120px">A</div>
-		 		<div class="ui-bar ui-bar-e" style="height:120px">A</div>
+		 		
+		 		<c:forEach var="each" items="${list}">
+		 			<div class="ui-bar ui-bar-e" style="height:129px">
+			 			<a href="/weixin/web/article/show?id=${each.id}" target="_blank">${each.title}</a>
+			 			${each.summary}
+			 		</div>
+		 		</c:forEach>
+		 		
 		 	</div>
 		 </div>
 	</div>

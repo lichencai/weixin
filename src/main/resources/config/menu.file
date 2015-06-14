@@ -22,7 +22,7 @@
                 {
                     "type": "view", 
                     "name": "ÎÒµÄ¿Õ¼ä", 
-                    "url":"http://lichencai.nat123.net/weixin/html/demo.html"
+                    "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx70e836323253f6ac&redirect_uri=http://haoyunlai158.com/weixin/web/index/welcome&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect"
                 }
             ]
         }, 

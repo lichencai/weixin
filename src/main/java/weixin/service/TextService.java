@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import weixin.resp.TextMessage;
 import weixin.util.MsgUtil;
+import weixin.util.SystemUtil;
 
 @Service("textService")
 public class TextService {
@@ -26,7 +27,7 @@ public class TextService {
     	textMessage.setFuncFlag(0);
     	
     	//  textMessage.setContent("<a href=\"" + OAuthService.oauthCodeUrl + "\">页面授权</a>");
-        textMessage.setContent("<a href=\"" + "http://lichencai.nat123.net/weixin/web/index/welcome" + "\">页面授权</a>");
+        textMessage.setContent("<a href=\"" + SystemUtil.ipAddress + "/weixin/web/index/welcome" + "\">页面授权</a>");
     	return textMessage;
 	}
 	

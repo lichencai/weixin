@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>       
 <!DOCTYPE HTML charset="utf-8">
 <html>
 <head>
@@ -54,9 +55,9 @@
 		
 		$("#pay").click(function(){
 			
-			var obj = {openid : $("#openid").val()};
+			var obj = {openid : $("#openid").val(), id : '${article.id}'};
 			
-			alert(obj.openid);
+			alert(obj.openid+","+obj.id);
 			
 			$.ajax({
 				url:"/weixin/web/pay/getPayData",
@@ -91,7 +92,8 @@
 
 </head>
 <body>
-
+文章标题:${article.title}<br />
+价格:${article.price / 100.0}元<br />
 <input id="pay" type="button" value="支付"/>
 <input id="openid" type="hidden" value="<%=request.getAttribute("openid")%>">
 </body>

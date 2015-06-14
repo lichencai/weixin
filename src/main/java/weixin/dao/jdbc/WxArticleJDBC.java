@@ -18,8 +18,31 @@ public class WxArticleJDBC {
 	
 	public List<WxArticle> getAll(){
 		List<Map<String, Object>> temp = jdbcTemplate.queryForList("select * from wxarticle order by createtime");
+		List<WxArticle> list = getArticle(temp);
+		return list;
+	}
+	
+	
+	public List<WxArticle> queryArticle(String type, Integer number, Integer id){
+		String sql = "select * from wxarticle where 1=1";
+		if(type != null){
+			sql += " and type=" + type;
+		}
+		if(id != null){
+			sql += " and id=" + id;
+		}
+		sql += " order by createtime desc";
+		if(number != null){
+			sql += " LIMIT " + number;
+		}
+		List<Map<String, Object>> temp = jdbcTemplate.queryForList(sql);
+		return getArticle(temp);
+	}
+	
+	
+	private List<WxArticle> getArticle(List<Map<String, Object>> result){
 		List<WxArticle> list = new ArrayList<WxArticle>();
-		for(Map<String, Object> map : temp){
+		for(Map<String, Object> map : result){
 			WxArticle article = new WxArticle();
 			for(String str : map.keySet()){
 				Object obj = map.get(str);
@@ -28,6 +51,8 @@ public class WxArticleJDBC {
 					article.setId((Integer)obj);
 				}else if("title".equals(str)){
 					article.setTitle((String)obj);
+				}else if("summary".equals(str)){
+					article.setSummary((String)obj);
 				}else if("type".equals(str)){
 					article.setType((String)obj);
 				}else if("content".equals(str)){

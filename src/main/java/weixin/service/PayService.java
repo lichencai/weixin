@@ -4,30 +4,42 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import weixin.dao.entity.WxArticle;
+import weixin.dao.jdbc.WxArticleJDBC;
 import weixin.util.HttpClientUtil;
 import weixin.util.SystemUtil;
 import weixin.util.WxUtil;
 import weixin.wxap.util.Sha1Util;
 
+@Service("payService")
 public class PayService {
 	//  统一支付接口
 	private static String unifiedorderUrl = "https://api.mch.weixin.qq.com/pay/unifiedorder";
 	
 	private static Logger logger = Logger.getLogger(CoreService.class);
 	
+	@Autowired
+	private WxArticleJDBC wxArticleJDBC;
 	/**
 	 * 统一支付接口
 	 * @throws IOException 
 	 * @throws JDOMException 
 	 */
-	public static Map<String, Object> unifiedorder(String openid,String spbill_create_ip) throws Exception{
-		logger.debug("openid:" + openid + " spbill_create_ip:" + spbill_create_ip);
+	public Map<String, Object> unifiedorder(String openid,String spbill_create_ip, Integer id) throws Exception{
+		logger.debug("openid:" + openid + " spbill_create_ip:" + spbill_create_ip + " id:" + id);
+		List<WxArticle> articles = wxArticleJDBC.queryArticle(null, null, id);
+		WxArticle article = articles.get(0);
+		
+		
 		Map<String, Object> result = new HashMap<String, Object>(); 
 		
 		SortedMap<Object,Object> parameters = new TreeMap<Object,Object>();
@@ -35,10 +47,10 @@ public class PayService {
 		parameters.put("mch_id", SystemUtil.MCH_ID);
 		//  parameters.put("device_info", SystemUtil.MCH_ID);
 		parameters.put("nonce_str", Sha1Util.getNonceStr());
-		parameters.put("body", URLEncoder.encode(new String("商品描述"), "UTF-8"));   //  商品描述 attach
-		//  parameters.put("attach", "");   //  附加数据，原样返回 
+		parameters.put("body", URLEncoder.encode(new String(article.getTitle()), "UTF-8"));   //  商品描述 attach
+		parameters.put("attach", article.getId());   //  附加数据，原样返回 
 		parameters.put("out_trade_no", WxUtil.getOut_trade_no());
-		parameters.put("total_fee", "1");
+		parameters.put("total_fee", article.getPrice());
 		parameters.put("spbill_create_ip", spbill_create_ip);
 		//parameters.put("time_start", SystemUtil.NOTIFY_URL);
 		//parameters.put("time_expire", SystemUtil.NOTIFY_URL);

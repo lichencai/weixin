@@ -8,7 +8,7 @@ public class WxUserArticle implements Serializable{
 	private static final long serialVersionUID = 6336661186881634768L;
 	private Integer id;
 	private Integer article;
-	private Integer user;
+	private String user;
 	private Date createtime;
 	public Integer getId() {
 		return id;
@@ -22,10 +22,10 @@ public class WxUserArticle implements Serializable{
 	public void setArticle(Integer article) {
 		this.article = article;
 	}
-	public Integer getUser() {
+	public String getUser() {
 		return user;
 	}
-	public void setUser(Integer user) {
+	public void setUser(String user) {
 		this.user = user;
 	}
 	public Date getCreatetime() {

@@ -19,7 +19,7 @@ public class IndexService {
 	
 	
 	public List<WxArticle> welcome(){
-		return wxArticleJDBC.getAll();
+		return wxArticleJDBC.queryArticle("04", 5, null);
 	}
 	
 	
