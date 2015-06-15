@@ -32,7 +32,7 @@ public class ArticleController {
 	
 	@RequestMapping(value = {"/show"}, method = {RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView show(HttpServletRequest request, HttpServletResponse response) throws IOException{
-		
+		logger.debug("=================ArticleController  show=====================================");
 		Integer articleId = Integer.parseInt(request.getParameter("id"));
 		String openid = (String)request.getSession().getAttribute("openid");
 		
@@ -51,16 +51,20 @@ public class ArticleController {
 		ModelAndView mav = null;
 		if(article.getPrice() != 0){
 			List<WxUserArticle> userArticles = wxUserArticleJDBC.queryWxUserArticle(articleId, openid);
+			logger.debug(userArticles);
 			if(userArticles.isEmpty()){
-				mav = new ModelAndView("/goPay");
+				mav = new ModelAndView("jsp/goPay");
+				mav.addObject("article", article);
+			}else{
+				mav = new ModelAndView("jsp/article");
 				mav.addObject("article", article);
 			}
 		}else{
-			mav = new ModelAndView("/article");
+			mav = new ModelAndView("jsp/article");
 			mav.addObject("article", article);
 		}
 		
-		
+		logger.debug(article.getId());
 		return mav;
 	}
 	

@@ -44,7 +44,7 @@ public class PayController {
 		
 		String openid = request.getParameter("openid");
 		String spbill_create_ip = request.getRemoteAddr();
-		Integer id = (Integer)request.getAttribute("id");
+		Integer id = Integer.parseInt((String)request.getParameter("id"));
 		Map<String, Object> map = payService.unifiedorder(openid, spbill_create_ip, id);
 		
 		logger.debug("===========[pay] map==========");

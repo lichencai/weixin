@@ -48,9 +48,9 @@ public class PayService {
 		//  parameters.put("device_info", SystemUtil.MCH_ID);
 		parameters.put("nonce_str", Sha1Util.getNonceStr());
 		parameters.put("body", URLEncoder.encode(new String(article.getTitle()), "UTF-8"));   //  商品描述 attach
-		parameters.put("attach", article.getId());   //  附加数据，原样返回 
+		parameters.put("attach", article.getId() + "");   //  附加数据，原样返回 
 		parameters.put("out_trade_no", WxUtil.getOut_trade_no());
-		parameters.put("total_fee", article.getPrice());
+		parameters.put("total_fee", article.getPrice() + "");
 		parameters.put("spbill_create_ip", spbill_create_ip);
 		//parameters.put("time_start", SystemUtil.NOTIFY_URL);
 		//parameters.put("time_expire", SystemUtil.NOTIFY_URL);

@@ -93,7 +93,7 @@
 
 </head>
 <body>
-文章标题:<%=((WxArticle)request.getAttribute("article")).getTitle() %><br />
+文章标题:<%=((WxArticle)request.getAttribute("article")).getTitle() %><br /><%=((WxArticle)request.getAttribute("article")).getId() %>
 价格:<%=((WxArticle)request.getAttribute("article")).getPrice() / 100.0 %>元<br />
 <input id="pay" type="button" value="支付"/>
 <input id="openid" type="hidden" value="<%=request.getAttribute("openid")%>">

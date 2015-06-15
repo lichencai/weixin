@@ -1,10 +1,12 @@
 package weixin.dao.jdbc;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.taglibs.standard.tag.rt.sql.DateParamTag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -29,10 +31,13 @@ public class WxUserArticleJDBC {
 	}
 	
 	public void save(WxUserArticle article){
+		Date date = article.getCreatetime();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String sql = "insert into wxuserarticle(article,user,createtime) values("
 				+ article.getArticle() 
-				+ "\'" + article.getUser() + "\'"
-				+ article.getCreatetime();
+				+ ",\'" + article.getUser() + "\',"
+				+ "\'" + sdf.format(date) + "\'"
+				+ ")";
 		jdbcTemplate.execute(sql);
 	}
 	

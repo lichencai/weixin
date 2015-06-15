@@ -45,7 +45,7 @@ public class IndexController {
 			}
 		}
 		ModelAndView mav = null;
-		mav = new ModelAndView("/index");
+		mav = new ModelAndView("jsp/index");
 		List<WxArticle> list = indexService.welcome();
 		mav.addObject("list",list);
 		return mav;

@@ -30,7 +30,7 @@ public class OAuthController {
 	
 	@RequestMapping(value = {"/redirect"}, method = RequestMethod.GET)
 	public ModelAndView redirect(HttpServletRequest request, HttpServletResponse response) throws Exception{
-		ModelAndView mav = new ModelAndView("pay/oauth");
+		ModelAndView mav = new ModelAndView("web/oauth/redirect/oauth");
 		/*String code = request.getParameter("code");
 		String state = request.getParameter("state");
 		if(code == null){
@@ -39,23 +39,13 @@ public class OAuthController {
 		}
 		logger.debug("redirect OAuthService.oauthCodeUrl : " + OAuthService.oauthCodeUrl);
 		String openid = OAuthService.getOauthAccessToke(code);*/
-		Integer articleId = (Integer)request.getAttribute("id");
+		Integer articleId = Integer.parseInt((String)request.getParameter("id"));
 		List<WxArticle> articles = wxArticleJDBC.queryArticle(null, null, articleId);
 		String openid = (String)request.getSession().getAttribute("openid");
 		mav.addObject("openid",openid);
 		mav.addObject("article",articles.get(0));
+		logger.debug(articles.get(0).getId());
 		return mav;
-	}
-	
-	
-	@RequestMapping(value = {"/notify_url"}, method = {RequestMethod.POST,RequestMethod.GET})
-	@ResponseBody
-	public SortedMap<Object, Object> pay(HttpServletRequest request, HttpServletResponse response) throws Exception{
-		Map<String, String> requestMap = WxUtil.parseXml(request); 
-		logger.debug(requestMap);
-		
-		
-		return null;
 	}
 	
 }

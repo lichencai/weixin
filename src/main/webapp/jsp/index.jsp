@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="java.util.List" %>
+<%@ page import="weixin.dao.entity.WxArticle" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -45,12 +48,20 @@
 		 			中共中央12日上午在人民大会堂举行座谈会，纪念陈云同志诞辰110周年。中共中央总书记、国家主席、中央军委主席习近平发表重要讲话
 		 		</div>
 		 		
-		 		<c:forEach var="each" items="${list}">
-		 			<div class="ui-bar ui-bar-e" style="height:129px">
-			 			<a href="/weixin/web/article/show?id=${each.id}" target="_blank">${each.title}</a>
-			 			${each.summary}
-			 		</div>
-		 		</c:forEach>
+		 		
+		 		<%
+		 			List<WxArticle> list = (List<WxArticle>)request.getAttribute("list");
+		 			for(WxArticle each : list){
+		 				%>
+			 			<div class="ui-bar ui-bar-e" style="height:129px">
+				 			<a href="/weixin/web/article/show?id=<%=each.getId() %>&type=<%=each.getType() %>" target="_blank"><%=each.getTitle() %></a>
+				 			<%=each.getSummary() %>
+				 		</div>
+		 				<%
+		 			}
+		 		%>
+		 		
+		 		
 		 		
 		 	</div>
 		 </div>

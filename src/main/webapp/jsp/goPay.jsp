@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
+<%@ page import="weixin.dao.entity.WxArticle" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,7 +19,7 @@
 		<div>
 			该文章需要购买后才能进行查看，是否进行购买?
 		</div>
-		<a href="/weixin/web/oauth/redirect?id=${article.id}" target="_blank">进行购买</a>
+		<a href="/weixin/web/oauth/redirect?id=<%=((WxArticle)request.getAttribute("article")).getId() %>" target="_blank">进行购买</a>
 		<a href="/weixin/web/index/welcome" target="_blank">返回首页</a>
 	</div>
 </div>
