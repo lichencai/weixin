@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,8 @@ public class IndexController {
 			logger.debug("redirect OAuthService.oauthCodeUrl : " + OAuthService.oauthCodeUrl);
 			openid = OAuthService.getOauthAccessToke(code);
 			if(!StringUtils.isEmpty(openid)){
-				request.getSession().setAttribute("openid", openid);
+				HttpSession session = request.getSession();
+				session.setAttribute("openid", openid);
 			}
 		}
 		ModelAndView mav = null;

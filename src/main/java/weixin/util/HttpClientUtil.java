@@ -7,10 +7,8 @@ import java.io.InputStreamReader;
 import java.net.ConnectException;
 import java.net.URL;
 
-import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 
@@ -21,8 +19,8 @@ public class HttpClientUtil {
 	private static Logger logger = Logger.getLogger(HttpClientUtil.class);
 	
 	public static String httpRequest(String requestUrl, String requestMethod, String outputStr){
-		
-		logger.debug("requestUrl: " + requestUrl + " requestMethod: " + requestMethod + " outputStr: " + outputStr);
+		logger.info("================HttpClientUtil httpRequest=========================");
+		logger.info("requestUrl: " + requestUrl + " requestMethod: " + requestMethod + " outputStr: " + outputStr);
 		
 		StringBuffer buffer = new StringBuffer();
 		try{
