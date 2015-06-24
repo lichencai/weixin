@@ -27,7 +27,7 @@ public class CoreServlet{
     /** 
      * 确认请求来自微信服务器 
      */  
-    @RequestMapping(value = {"/web/coreServlet"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/coreServlet"}, method = RequestMethod.GET)
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
         // 微信加密签名  
         String signature = request.getParameter("signature");  
@@ -53,7 +53,7 @@ public class CoreServlet{
     /** 
      * 处理微信服务器发来的消息 
      */  
-    @RequestMapping(value = {"/web/coreServlet"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/coreServlet"}, method = RequestMethod.POST)
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
     	
     	// 将请求、响应的编码均设置为UTF-8（防止中文乱码）  

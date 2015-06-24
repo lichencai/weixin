@@ -19,7 +19,7 @@ import weixin.dao.jdbc.WxArticleJDBC;
 import weixin.dao.jdbc.WxUserArticleJDBC;
 
 @Controller
-@RequestMapping(value = "/web/article")
+@RequestMapping(value = "/article")
 public class ArticleController {
 
 	@Autowired

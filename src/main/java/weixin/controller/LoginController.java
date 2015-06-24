@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import weixin.resp.user.LoginResp;
 
 @Controller
-@RequestMapping(value = "/web/login")
+@RequestMapping(value = "/login")
 public class LoginController {
 	
 	@RequestMapping(value = {"/login"}, method = RequestMethod.POST,produces="application/json;charset=UTF-8")

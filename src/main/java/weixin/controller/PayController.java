@@ -24,7 +24,7 @@ import weixin.util.SystemUtil;
 import weixin.util.WxUtil;
 
 @Controller
-@RequestMapping(value = "/web/pay")
+@RequestMapping(value = "/pay")
 public class PayController {
 	
 	private static Logger logger = Logger.getLogger(PayController.class);

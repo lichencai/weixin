@@ -20,7 +20,7 @@ import weixin.service.IndexService;
 import weixin.service.OAuthService;
 
 @Controller
-@RequestMapping(value = "/web/index")
+@RequestMapping(value = "/index")
 public class IndexController {
 	
 	@Autowired

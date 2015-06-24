@@ -12,16 +12,11 @@
             ]
         }, 
         {
-            "name": "好运来", 
-            "sub_button": [
+            "name": "和悦咨询", 
+            "sub_button": [ 
                 {
                     "type": "view", 
                     "name": "首页", 
-                    "url":"http://lichencai.nat123.net/weixin/html/demo.html"
-                 }, 
-                {
-                    "type": "view", 
-                    "name": "我的空间", 
                     "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx70e836323253f6ac&redirect_uri=http://haoyunlai158.com/weixin/web/index/welcome&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect"
                 }
             ]
@@ -29,7 +24,7 @@
         {
             "name": "关于我们",
             "type": "view",
-            "url":"http://lichencai.nat123.net/weixin/html/aboutus.html"
+            "url":"http://haoyunlai158.com/weixin/html/aboutus.html"
         }
     ]
 }

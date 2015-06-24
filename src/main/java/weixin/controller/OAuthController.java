@@ -20,7 +20,7 @@ import weixin.dao.jdbc.WxArticleJDBC;
 import weixin.util.WxUtil;
 
 @Controller
-@RequestMapping(value = "/web/oauth")
+@RequestMapping(value = "/oauth")
 public class OAuthController {
 	
 	private static Logger logger = Logger.getLogger(OAuthController.class);

@@ -18,7 +18,7 @@ import weixin.util.TokenUtil;
 import weixin.wxap.util.Sha1Util;
 
 @Controller
-@RequestMapping(value = "/web/jssdk")
+@RequestMapping(value = "/jssdk")
 public class JSSDKControll {
 	private static Logger logger = Logger.getLogger(JSSDKControll.class);
 	
