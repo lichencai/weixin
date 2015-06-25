@@ -42,8 +42,8 @@ public class CoreService {
         	
             // xml请求解析  
             Map<String, String> requestMap = WxUtil.parseXml(request); 
-            logger.debug("=====================requestMap========================");
-            logger.debug(requestMap);
+            logger.info("=====================requestMap========================");
+            logger.info(requestMap);
             
             // 发送方帐号（open_id）  
             String fromUserName = requestMap.get("FromUserName");  

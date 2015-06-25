@@ -19,7 +19,7 @@ import weixin.dao.jdbc.WxArticleJDBC;
 import weixin.dao.jdbc.WxUserArticleJDBC;
 
 @Controller
-@RequestMapping(value = "/article")
+@RequestMapping(value = "/web/article")
 public class ArticleController {
 
 	@Autowired
@@ -32,17 +32,11 @@ public class ArticleController {
 	
 	@RequestMapping(value = {"/show"}, method = {RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView show(HttpServletRequest request, HttpServletResponse response) throws IOException{
-		logger.debug("=================ArticleController  show=====================================");
+
 		Integer articleId = Integer.parseInt(request.getParameter("id"));
 		String openid = (String)request.getSession().getAttribute("openid");
 		
-		if(openid == null){
-			response.sendRedirect("/weixin/error/oauthError.html");
-			return null;
-		}
-		
-		
-		List<WxArticle> articles = wxArticleJDBC.queryArticle(null, null, articleId);
+		List<WxArticle> articles = wxArticleJDBC.queryArticle(null, null, articleId, null);
 		if(articles.isEmpty()){
 			logger.error("can not find article by id");
 			return null;

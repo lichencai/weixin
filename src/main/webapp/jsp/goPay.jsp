@@ -11,7 +11,7 @@
 <script type="text/javascript">
 </script>
 
-<title>goPay</title>
+<title>提示</title>
 </head>
 <body>
 <div data-role="page" id="page1">
@@ -19,8 +19,8 @@
 		<div>
 			该文章需要购买后才能进行查看，是否进行购买?
 		</div>
-		<a href="/weixin/web/oauth/redirect?id=<%=((WxArticle)request.getAttribute("article")).getId() %>" target="_blank">进行购买</a>
-		<a href="/weixin/web/index/welcome" target="_blank">返回首页</a>
+		<a href="/weixin/web/oauth/redirect.do?id=<%=((WxArticle)request.getAttribute("article")).getId() %>" target="_blank">进行购买</a>
+		<a href="/weixin/web/index/welcome.do" target="_blank">返回首页</a>
 	</div>
 </div>
 </body>

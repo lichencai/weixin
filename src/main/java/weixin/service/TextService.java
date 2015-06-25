@@ -26,7 +26,11 @@ public class TextService {
     	textMessage.setCreateTime(new Date().getTime());  
     	textMessage.setFuncFlag(0);
     	
-        textMessage.setContent("");
+    	String content = requestMap.get("Content");
+    	if("page1".equals(content)){
+    		textMessage.setContent("<a href=\"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx70e836323253f6ac&redirect_uri=http://lichencai.nat123.net/weixin/web/index/welcome.do&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect\">page1</a>");
+    	}
+        
     	return textMessage;
 	}
 	

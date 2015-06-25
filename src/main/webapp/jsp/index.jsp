@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
-<title>index</title>
+<title>首页</title>
 
 <script type="text/javascript">
 </script>
@@ -28,41 +28,27 @@
 
 <div data-role="page" id="page1">
  
-    <div data-role="header" data-position="fixed">
-		<h1>和悦资讯</h1>
-	</div>
- 	
     <div data-role="content" data-theme="c">
 	    <div data-role="navbar">
 		    <ul>
-		      <li><a href="/weixin/html/page1.html"  target="_blank">今日资讯</a></li>
-		      <li><a href="#anylink">新闻类</a></li>
-		      <li><a href="#anylink">财经类</a></li>
+		      <li><a href="/weixin/web/daynews/getList.do"  target="_blank">今日资讯</a></li>
+		      <li><a href="/weixin/web/news/getList.do"  target="_blank">新闻类</a></li>
+		      <li><a href="/weixin/web/economy/getList.do"  target="_blank">财经类</a></li>
 		    </ul>
 		 </div>
 		 <div class="ui-grid-a">
 		 	<div class="ui-block-a">
-		 		
-		 		<div class="ui-bar ui-bar-e" style="height:129px">
-		 			<a href="/weixin/web/article/show" target="_blank">中共中央纪念陈云诞辰110周年</a>
-		 			中共中央12日上午在人民大会堂举行座谈会，纪念陈云同志诞辰110周年。中共中央总书记、国家主席、中央军委主席习近平发表重要讲话
-		 		</div>
-		 		
-		 		
 		 		<%
 		 			List<WxArticle> list = (List<WxArticle>)request.getAttribute("list");
 		 			for(WxArticle each : list){
 		 				%>
 			 			<div class="ui-bar ui-bar-e" style="height:129px">
-				 			<a href="/weixin/web/article/show?id=<%=each.getId() %>&type=<%=each.getType() %>" target="_blank"><%=each.getTitle() %></a>
+				 			<a href="/weixin/web/article/show.do?id=<%=each.getId() %>&type=<%=each.getType() %>" target="_blank"><%=each.getTitle() %></a>
 				 			<%=each.getSummary() %>
 				 		</div>
 		 				<%
 		 			}
 		 		%>
-		 		
-		 		
-		 		
 		 	</div>
 		 </div>
 	</div>

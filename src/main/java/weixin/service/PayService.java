@@ -36,7 +36,7 @@ public class PayService {
 	 */
 	public Map<String, Object> unifiedorder(String openid,String spbill_create_ip, Integer id) throws Exception{
 		logger.debug("openid:" + openid + " spbill_create_ip:" + spbill_create_ip + " id:" + id);
-		List<WxArticle> articles = wxArticleJDBC.queryArticle(null, null, id);
+		List<WxArticle> articles = wxArticleJDBC.queryArticle(null, null, id, null);
 		WxArticle article = articles.get(0);
 		
 		

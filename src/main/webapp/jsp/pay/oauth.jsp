@@ -23,7 +23,7 @@
 		
 		$.ajax({
 			
-			url : "/weixin/web/jssdk/getConfigData",
+			url : "/weixin/web/jssdk/getConfigData.do",
 			type : "post",
 			data : wxConfig,
 			dataType : "json",
@@ -61,7 +61,7 @@
 			alert(obj.openid+","+obj.id);
 			
 			$.ajax({
-				url:"/weixin/web/pay/getPayData",
+				url:"/weixin/web/pay/getPayData.do",
 				type : "post",
 				data : obj,
 				dataType : "json",

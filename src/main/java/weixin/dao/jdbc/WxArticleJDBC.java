@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import weixin.dao.entity.WxArticle;
+import weixin.util.DateUtil;
 
 @Repository
 public class WxArticleJDBC {
@@ -23,13 +24,20 @@ public class WxArticleJDBC {
 	}
 	
 	
-	public List<WxArticle> queryArticle(String type, Integer number, Integer id){
+	public List<WxArticle> queryArticle(String type, Integer number, Integer id, Date date){
 		String sql = "select * from wxarticle where 1=1";
 		if(type != null){
 			sql += " and type=" + type;
 		}
 		if(id != null){
 			sql += " and id=" + id;
+		}
+		if(date != null){
+			String dateStr = DateUtil.dateToString(date, "yyyy-MM-dd");
+			String begin = dateStr + " 00:00:00";
+			String end = dateStr + " 23:59:59";
+			sql += " and createtime>=" + "\'" + begin + "\'";
+			sql += " and createtime<=" + "\'" + end + "\'";
 		}
 		sql += " order by createtime desc";
 		if(number != null){
@@ -46,7 +54,6 @@ public class WxArticleJDBC {
 			WxArticle article = new WxArticle();
 			for(String str : map.keySet()){
 				Object obj = map.get(str);
-				System.out.println(obj.toString());
 				if("id".equals(str)){
 					article.setId((Integer)obj);
 				}else if("title".equals(str)){

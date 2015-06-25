@@ -24,9 +24,6 @@
 </head>
 <body>
 	<div data-role="page" id="page1">
-		<!-- <div data-role="header" data-position="fixed">
-			<h1>中共中央纪念陈云诞辰110周年</h1>
-		</div> -->
 		<div data-role="content" data-theme="c">
 		<label class="divlab"><%=((WxArticle)request.getAttribute("article")).getTitle() %></label><br >
 		<%=((WxArticle)request.getAttribute("article")).getContent() %>

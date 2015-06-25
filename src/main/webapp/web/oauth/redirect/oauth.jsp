@@ -23,7 +23,7 @@
 		
 		$.ajax({
 			
-			url : "/weixin/web/jssdk/getConfigData",
+			url : "/weixin/web/jssdk/getConfigData.do",
 			type : "post",
 			data : wxConfig,
 			dataType : "json",

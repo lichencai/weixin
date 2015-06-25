@@ -21,18 +21,8 @@
 
 	<servlet-mapping>
 		<servlet-name>weixin</servlet-name>
-		<url-pattern>/web/*</url-pattern>
+		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
-	
-	<!-- <servlet-mapping>  
-    	<servlet-name>default</servlet-name>  
-	    <url-pattern>/css/*</url-pattern>
-	    <url-pattern>/error/*</url-pattern>
-	    <url-pattern>/html/*</url-pattern>
-		<url-pattern>/img/*</url-pattern>
-		<url-pattern>/js/*</url-pattern>
-    	<url-pattern>/jsp/*</url-pattern>  
-	</servlet-mapping> -->
     <!-- 配置spring的拦截器  -->
     
     <!--Spring ApplicationContext 载入 -->  
@@ -51,6 +41,20 @@
 	    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
     <!--Spring ApplicationContext 载入 -->  
+    
+    <filter>
+		<filter-name>openIdFilter</filter-name>
+		<filter-class>weixin.core.OpenIdFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>openIdFilter</filter-name>
+		<url-pattern>/article/show</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>openIdFilter</filter-name>
+		<url-pattern>/index/welcome</url-pattern>
+	</filter-mapping>
+	
     
     <!-- 强制转码 -->
 	<filter>
