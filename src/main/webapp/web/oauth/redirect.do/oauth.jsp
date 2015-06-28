@@ -16,7 +16,7 @@
 <script type="text/javascript">
 	
 	var appId,timeStamp,nonceStr,varpackage,signType,paySign;
-	
+	alert(location.href.split('#')[0]);
 	var wxConfig = {jssdkURL : location.href.split('#')[0]};
 	/* var wxConfig = {jssdkURL : "/weixin/jsp/pay/"}; */
 	$(function(){
@@ -58,16 +58,13 @@
 			
 			var obj = {openid : $("#openid").val(), id : $("#articleid").val()};
 			
-			alert(obj.openid+","+obj.id);
 			
 			$.ajax({
-				url:"/weixin/web/pay/getPayData",
+				url:"/weixin/web/pay/getPayData.do",
 				type : "post",
 				data : obj,
 				dataType : "json",
 				success : function(json) {
-					
-					alert("appid:" + json.appId + ",timeStamp:" + json.timeStamp + ",nonceStr:" + json.nonceStr + ",package:" + json.package + ",signType:" + json.signType + ",paySign:" + json.paySign);
 					
 		            wx.chooseWXPay({
 		                timestamp: json.timeStamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
@@ -93,7 +90,7 @@
 
 </head>
 <body>
-文章标题:<%=((WxArticle)request.getAttribute("article")).getTitle() %><br /><%=((WxArticle)request.getAttribute("article")).getId() %>
+文章标题:<%=((WxArticle)request.getAttribute("article")).getTitle() %><br />
 价格:<%=((WxArticle)request.getAttribute("article")).getPrice() / 100.0 %>元<br />
 <input id="pay" type="button" value="支付"/>
 <input id="openid" type="hidden" value="<%=request.getAttribute("openid")%>">

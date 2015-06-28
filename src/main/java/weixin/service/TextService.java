@@ -29,8 +29,10 @@ public class TextService {
     	String content = requestMap.get("Content");
     	if("page1".equals(content)){
     		textMessage.setContent("<a href=\"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx70e836323253f6ac&redirect_uri=http://lichencai.nat123.net/weixin/web/index/welcome.do&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect\">page1</a>");
+    	}else if("page11".equals(content)){
+    		textMessage.setContent("<a href=\"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx70e836323253f6ac&redirect_uri=http://haoyunlai158.com/weixin/web/index/welcome.do&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect\">page11</a>");
     	}
-        
+    	
     	return textMessage;
 	}
 	

@@ -9,12 +9,14 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import weixin.dao.entity.WxArticle;
 import weixin.service.IndexService;
+import weixin.service.OAuthService;
 
 @Controller
 @RequestMapping(value = "/web/index")
@@ -29,7 +31,7 @@ public class IndexController {
 	public ModelAndView welcome(HttpServletRequest request, HttpServletResponse response){
 		try{
 			String openid = (String)request.getSession().getAttribute("openid");
-			/*if(StringUtils.isEmpty(openid)){
+			if(StringUtils.isEmpty(openid)){
 				String code = request.getParameter("code");
 				String state = request.getParameter("state");
 				if(code == null){
@@ -41,10 +43,7 @@ public class IndexController {
 					HttpSession session = request.getSession();
 					session.setAttribute("openid", openid);
 				}
-			}*/
-			openid = "odZyht0mu6k2frRLpRe-1JSerpOA";   //  TODO  设置默认 测试使用
-			HttpSession session = request.getSession();
-			session.setAttribute("openid", openid);
+			}
 			
 			ModelAndView mav = null;
 			mav = new ModelAndView("jsp/index");

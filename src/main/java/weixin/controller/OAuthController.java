@@ -28,7 +28,7 @@ public class OAuthController {
 	public ModelAndView redirect(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		logger.info("=======redirect======");
 		
-		ModelAndView mav = new ModelAndView("web/oauth/redirect/oauth");
+		ModelAndView mav = new ModelAndView("web/oauth/redirect.do/oauth");
 		Integer articleId = Integer.parseInt((String)request.getParameter("id"));
 		List<WxArticle> articles = wxArticleJDBC.queryArticle(null, null, articleId, null);
 		String openid = (String)request.getSession().getAttribute("openid");

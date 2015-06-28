@@ -28,6 +28,11 @@ public class SubscribeService {
 		user.setOpenid(requestMap.get("FromUserName"));
 		wxUserInfoJDBC.save(user);
 	}
+
+	public void unSubscribe(Map<String, String> requestMap) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }

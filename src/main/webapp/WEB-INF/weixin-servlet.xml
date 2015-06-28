@@ -29,7 +29,7 @@
     <task:scheduled-tasks scheduler="myscheduler">   
 		<task:scheduled ref="tokenTask" method="job" cron="0 0 * * * ?"/>   
 	</task:scheduled-tasks> 
-	  
+	<mvc:resources mapping="/web/oauth/redirect.do/**" location="/static_resources/javascript/"/>
 	<task:scheduler id="myscheduler" pool-size="10"/>
 	
     <!-- 视图解释类 -->  

@@ -1,15 +1,9 @@
 {
     "button": [
         {
-            "name": "和悦资讯", 
-            "sub_button": [
-                {
-                    "type": "scancode_waitmsg", 
-                    "name": "今日资讯", 
-                    "key": "rselfmenu_0_0", 
-                    "sub_button": [ ]
-                }
-            ]
+            "name": "今日资讯",
+            "type": "view",
+            "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx70e836323253f6ac&redirect_uri=http://haoyunlai158.com/weixin/web/index/welcome.do&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect"
         }, 
         {
             "name": "和悦咨询", 
@@ -17,7 +11,7 @@
                 {
                     "type": "view", 
                     "name": "首页", 
-                    "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx70e836323253f6ac&redirect_uri=http://haoyunlai158.com/weixin/web/index/welcome&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect"
+                    "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx70e836323253f6ac&redirect_uri=http://haoyunlai158.com/weixin/web/index/welcome.do&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect"
                 }
             ]
         }, 
